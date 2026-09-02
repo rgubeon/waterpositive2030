@@ -378,12 +378,6 @@ input{font-family:inherit}
         </div>
       </sc-for>
     </div>
-    <sc-if value="{{ sinResultados }}" hint-placeholder-val="{{ false }}">
-      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:20px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.45);border-radius:24px;padding:44px 46px;margin-top:44px">
-        <p style="font-size:20px;color:#fff;max-width:620px;text-wrap:pretty">Ningún documento coincide con esta combinación de filtros.</p>
-        <button onClick="{{ limpiarFiltros }}" style="display:flex;align-items:center;gap:12px;background:#fff;border:0;border-radius:999px;padding:11px 22px;font-size:16px;font-weight:700;color:#297AB1;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#EAF6FA;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">Quitar todos los filtros</button>
-      </div>
-    </sc-if>
     <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style="display:block;width:calc(100% + 200px);height:96px;margin:100px -100px -1px">
       <path d="M0,46 C230,96 470,4 760,26 C1030,46 1240,80 1440,58 L1440,90 L0,90 Z" fill="#fff"></path>
     </svg>
@@ -503,12 +497,6 @@ input{font-family:inherit}
         </div>
       </sc-for>
     </div>
-    <sc-if value="{{ sinResultados }}" hint-placeholder-val="{{ false }}">
-      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:20px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.45);border-radius:24px;padding:44px 46px;margin-top:44px">
-        <p style="font-size:20px;color:#fff;max-width:620px;text-wrap:pretty">Ningún documento coincide con esta combinación de filtros.</p>
-        <button onClick="{{ limpiarFiltros }}" style="display:flex;align-items:center;gap:12px;background:#fff;border:0;border-radius:999px;padding:11px 22px;font-size:16px;font-weight:700;color:#297AB1;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#EAF6FA;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">Quitar todos los filtros</button>
-      </div>
-    </sc-if>
     <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style="display:block;width:calc(100% + 200px);height:96px;margin:100px -100px -1px">
       <path d="M0,46 C230,96 470,4 760,26 C1030,46 1240,80 1440,58 L1440,90 L0,90 Z" fill="#fff"></path>
     </svg>
@@ -1321,6 +1309,7 @@ class Component extends DCLogic {
       cerrarProyecto: () => { this._gal = null; this.setState({ proyecto: null }); },
       pararClick: (e) => { if (e) e.stopPropagation(); },
       actividades: Array.from({ length: Math.max(1, nAct) }, (_, k) => ({ id: k })),
+      noticias: Array.from({ length: 4 }, (_, k) => ({ id: k })),
       documentos: this.documentosFiltrados(),
       sinResultados: this.documentosFiltrados().length === 0,
       menusFiltro: this.menusDoc().filter((m) => m.id !== 'orden'),
