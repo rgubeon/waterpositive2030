@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Water Positive 2030 · Suntory Beverage &amp; Food Iberia</title>
-<meta name="description" content="Water Positive 2030: devolver a la naturaleza más agua de la que utilizamos. Proyectos, documentos y actividades de Suntory Beverage &amp; Food Iberia.">
+<meta name="description" content="Water Positive 2030: devolver a la naturaleza más agua de la que utilizamos. Proyectos, documentos, noticias e iniciativas de Suntory Beverage &amp; Food Iberia.">
 <link rel="icon" href="assets/logo-wp.svg" type="image/svg+xml">
 <meta property="og:title" content="Water Positive 2030 · Suntory Beverage &amp; Food Iberia">
 <meta property="og:description" content="Devolver a la naturaleza más agua de la que utilizamos.">
@@ -26,30 +26,194 @@ input{font-family:inherit}
 ::placeholder{color:#8FB9D4}
 @keyframes flotar{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
   @keyframes wpFade { from { opacity: 0 } to { opacity: 1 } }
+  /* Movimiento: todas las entradas/salidas usan ease-in-out (easeInOutCubic) */
+  @keyframes wpVeloIn { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes wpVeloOut { from { opacity: 1 } to { opacity: 0 } }
+  @keyframes wpPanelIn { from { opacity: 0; transform: translateY(28px) scale(.96) } to { opacity: 1; transform: none } }
+  @keyframes wpPanelOut { from { opacity: 1; transform: none } to { opacity: 0; transform: translateY(18px) scale(.97) } }
+  @keyframes wpMenuIn { from { opacity: 0; transform: translateY(-18px) } to { opacity: 1; transform: none } }
+  @keyframes wpDesplegar { from { opacity: 0; transform: translateY(-8px) scale(.98) } to { opacity: 1; transform: none } }
+  [data-velo]{animation:wpVeloIn .5s cubic-bezier(.65,0,.35,1) both}
+  [data-velo][data-saliendo=si]{animation:wpVeloOut .42s cubic-bezier(.65,0,.35,1) both;pointer-events:none}
+  [data-panel]{animation:wpPanelIn .6s cubic-bezier(.65,0,.35,1) .04s both}
+  [data-saliendo=si] [data-panel]{animation:wpPanelOut .42s cubic-bezier(.65,0,.35,1) both}
+  [data-r=menuMovil] nav a{animation:wpMenuIn .55s cubic-bezier(.65,0,.35,1) both}
+  [data-r=menuMovil] nav a:nth-child(2){animation-delay:.04s}[data-r=menuMovil] nav a:nth-child(3){animation-delay:.08s}
+  [data-r=menuMovil] nav a:nth-child(4){animation-delay:.12s}[data-r=menuMovil] nav a:nth-child(5){animation-delay:.16s}
+  [data-r=menuMovil] nav a:nth-child(6){animation-delay:.2s}[data-r=menuMovil] nav a:nth-child(7){animation-delay:.24s}
+  [data-r=desplegable]{animation:wpDesplegar .32s cubic-bezier(.65,0,.35,1) both;transform-origin:top left}
+  @media (prefers-reduced-motion: reduce){
+    [data-velo],[data-panel],[data-r=menuMovil] nav a,[data-r=desplegable]{animation-duration:.01s !important;animation-delay:0s !important}
+    [data-r=fabricaPliegue]{transition:none !important}
+  }
+  [data-r=compRango]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:64px;height:2000px;background:transparent;cursor:ew-resize}
+  [data-r=compRango]::-moz-range-thumb{width:64px;height:2000px;border:0;background:transparent;cursor:ew-resize}
+  [data-r=compRango]:focus-visible ~ [data-r=compMando]{outline:3px solid #297AB1;outline-offset:3px}
+  [data-r=btnFila] > span:first-child{text-align:left}
+  [data-r=btnFila] > span:last-child{white-space:nowrap;flex:none}
+@media (min-width:1200px){
+  [data-r=comp]{aspect-ratio:auto !important;flex:1;min-height:420px}
+}
+
+/* ---------- Lienzo de 1440px (portátiles 1200–1599px) ---------- */
+[data-lienzo="1440"] [data-r=hdr]{padding:40px 64px 28px !important;gap:32px !important}
+[data-lienzo="1440"] [data-r=navDesk]{gap:28px !important}
+[data-lienzo="1440"] [data-r=heroCapa]{margin:0 32px !important}
+[data-lienzo="1440"] [data-r=hero]{padding:144px 64px 0 !important}
+[data-lienzo="1440"] [data-r=heroFila]{gap:48px !important}
+[data-lienzo="1440"] [data-r=heroLogo]{width:330px !important}
+[data-lienzo="1440"] [data-r=heroTexto]{max-width:860px !important}
+[data-r=raiz][data-lienzo="1440"] [data-r=heroH1]{width:auto !important;height:auto !important;font-size:62px !important}
+[data-lienzo="1440"] [data-r=heroCta]{right:64px !important;bottom:56px !important}
+[data-lienzo="1440"] [data-r=intro]{padding:80px 64px 0 !important}
+[data-lienzo="1440"] [data-r=olaPie]{width:calc(100% + 128px) !important;margin-left:-64px !important;margin-right:-64px !important}
+[data-lienzo="1440"] [data-r=secClara]{padding-left:64px !important;padding-right:64px !important}
+[data-lienzo="1440"] [data-r=g2]{gap:56px !important}
+[data-lienzo="1440"] [data-g=acciones]{grid-template-columns:440px minmax(0,1fr) !important}
+[data-lienzo="1440"] [data-r=secVideo]{padding:0 32px !important}
+[data-lienzo="1440"] [data-r=olaVideo]{left:-32px !important;width:calc(100% + 64px) !important}
+[data-lienzo="1440"] [data-r=gridVideo]{gap:56px !important;padding:180px 64px 190px !important}
+[data-lienzo="1440"] [data-r=vidrio]{padding:40px 36px !important}
+[data-lienzo="1440"] [data-r=pagina]{padding-left:64px !important;padding-right:64px !important}
+[data-lienzo="1440"] [data-r=gridDocs]{grid-template-columns:repeat(4,minmax(0,1fr)) !important;gap:26px !important}
+[data-lienzo="1440"] [data-r=pie]{padding-left:64px !important;padding-right:64px !important}
+[data-lienzo="1440"] [data-r=pieLogo]{width:240px !important}
+[data-lienzo="1440"] [data-r=modalFondo]{padding:40px !important}
+[data-lienzo="1440"] [data-r=ficha]{padding:48px 44px 44px !important;gap:40px !important}
+/* ---------- Responsive: por debajo de 1200px la web deja de escalar y pasa a maqueta fluida ---------- */
+@media (max-width:1199px){
+  [data-r=raiz]{width:100% !important;zoom:1 !important}
+  [data-r=hdr]{padding:22px 24px 20px !important;gap:20px !important;justify-content:space-between}
+  [data-r=navDesk]{display:none !important}
+  [data-r=burger]{display:flex !important}
+  [data-r=logo]{width:62px !important;height:66px !important}
+  [data-r=logo] img{width:62px !important;height:66px !important}
+  [data-r=heroCapa]{margin:0 12px !important;border-radius:24px !important}
+  [data-r=hero]{padding:110px 28px 40px !important}
+  [data-r=heroFila]{flex-direction:column !important;gap:26px !important;text-align:center}
+  [data-r=heroLogo]{width:220px !important}
+  [data-r=heroTexto]{align-items:center !important}
+  [data-r=heroKicker]{font-size:24px !important}
+  [data-r=raiz] [data-r=heroH1]{width:auto !important;height:auto !important;font-size:48px !important}
+  [data-r=heroCta]{position:static !important;margin-top:34px;font-size:17px !important}
+  [data-r=intro]{padding:56px 28px 0 !important}
+  [data-r=introFotos]{padding:0 0 24px !important;gap:20px}
+  [data-r=introFotos] svg{display:none !important}
+  [data-r=introFotos] img{width:46% !important;height:auto !important;aspect-ratio:16/10}
+  [data-r=introTexto]{padding:30px 0 !important}
+  [data-r=introTexto] p{font-size:17px !important}
+  [data-r=introTexto] h2{font-size:34px !important;margin:34px 0 20px !important}
+  [data-r=olaPie]{width:calc(100% + 56px) !important;margin:60px -28px -1px !important;height:56px !important}
+  [data-r=raiz] h2{font-size:32px !important;line-height:1.18 !important}
+  [data-r=raiz] h1{font-size:42px !important}
+  [data-r=secClara]{padding:70px 28px !important}
+  [data-r=g2]{grid-template-columns:minmax(0,1fr) !important;gap:44px !important}
+  [data-r=filaVerMas]{flex-direction:column !important;align-items:flex-start !important;gap:18px !important}
+  [data-r=secVideo]{padding:0 12px !important}
+  [data-r=altoVideo]{min-height:0 !important}
+  [data-r=olaVideo]{left:-12px !important;width:calc(100% + 24px) !important;height:56px !important}
+  [data-r=gridVideo]{grid-template-columns:minmax(0,1fr) !important;gap:40px !important;padding:100px 22px 110px !important}
+  [data-r=vidrio]{padding:32px 26px !important}
+  [data-r=kpiFabrica]{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:14px !important}
+  [data-r=logoGdt]{max-width:320px !important}
+  [data-r=cajaObj]{padding:22px 20px !important}
+  [data-r=listaRetos]{padding:22px 20px 22px 42px !important}
+  [data-r=pagina]{padding:120px 28px 0 !important}
+  [data-r=gridDocs]{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:22px !important;padding-top:50px !important}
+  [data-r=enlaces]{margin-top:70px !important}
+  [data-r=tarjetaH]{grid-template-columns:minmax(0,1fr) !important;gap:22px !important}
+  [data-r=tarjetaH] img{height:240px !important}
+  [data-r=tarjetaH] > div{padding-right:0 !important}
+  [data-r=tarjetaH] h3{font-size:23px !important}
+  [data-r=pie]{padding:40px 28px 30px !important}
+  [data-r=pieFila]{flex-direction:column-reverse !important;gap:30px !important}
+  [data-r=pieGrid]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;gap:30px !important}
+  [data-r=pieGrid] > h2{grid-column:1 / -1}
+  [data-r=pieLogo]{width:150px !important;align-self:flex-start !important}
+  [data-r=modalFondo]{padding:12px !important}
+  [data-r=ficha]{grid-template-columns:minmax(0,1fr) !important;gap:22px !important;padding:76px 28px 30px !important}
+  [data-r=fichaPortada]{flex:none !important;min-height:0 !important;aspect-ratio:16 / 9}
+  [data-r=compFigura]{width:100%;max-width:560px;margin:0 auto !important}
+  [data-r=fichaCuerpo] h2{padding-right:50px !important}
+  [data-r=fichaCuerpo]{padding-right:0 !important}
+  [data-r=menuMovil] a{font-size:26px}
+}
+@media (max-width:767px){
+  [data-r=btnFila]{padding:16px 16px !important;gap:12px !important}
+  [data-r=btnFila] > span:first-child{text-align:left;font-size:17px !important}
+  [data-r=btnFila] > span:last-child{font-size:0 !important;gap:0 !important}
+  [data-r=filtroItem]{position:static !important}
+  [data-r=desplegable]{left:0 !important;right:0 !important;min-width:0 !important;top:auto !important;margin-top:10px}
+}
+@media (max-width:767px){
+  [data-r=hero]{padding:96px 20px 32px !important}
+  [data-r=heroLogo]{width:160px !important}
+  [data-r=heroKicker]{font-size:19px !important}
+  [data-r=raiz] [data-r=heroH1]{font-size:34px !important}
+  [data-r=heroCta]{font-size:15px !important;padding:10px 12px 10px 20px !important;gap:14px !important}
+  [data-r=intro]{padding:40px 20px 0 !important}
+  [data-r=introTexto] p{font-size:16px !important}
+  [data-r=introTexto] h2{font-size:28px !important}
+  [data-r=olaPie]{width:calc(100% + 40px) !important;margin:44px -20px -1px !important}
+  [data-r=raiz] h2{font-size:27px !important}
+  [data-r=raiz] h1{font-size:34px !important}
+  [data-r=secClara]{padding:56px 20px !important}
+  [data-r=pilares]{grid-template-columns:minmax(0,1fr) !important}
+  [data-r=gridVideo]{padding:80px 14px 90px !important}
+  [data-r=vidrio]{padding:26px 18px !important}
+  [data-r=raiz] [data-cifra]{font-size:30px !important}
+  [data-r=destacado]{flex-direction:column !important;align-items:flex-start !important;gap:8px !important}
+  [data-r=kpiImpacto]{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:12px !important}
+  [data-r=kpiImpacto] > div{grid-column:auto !important;padding:20px 14px !important}
+  [data-r=kpiImpacto] > div:last-child{grid-column:1 / -1 !important}
+  [data-r=pagina]{padding:110px 20px 0 !important}
+  [data-r=gridDocs]{grid-template-columns:minmax(0,1fr) !important}
+  [data-r=tarjetaH]{padding:16px !important}
+  [data-r=tarjetaH] img{height:190px !important}
+  [data-r=tarjetaH] h3{font-size:20px !important}
+  [data-r=pie]{padding:36px 20px 26px !important}
+  [data-r=pieGrid]{grid-template-columns:minmax(0,1fr) !important}
+  [data-r=ficha]{padding:70px 18px 24px !important}
+  [data-r=fichaPortada]{aspect-ratio:4 / 3}
+  [data-r=fichaKpis]{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px !important}
+  [data-r=fichaKpis] > div{grid-column:auto !important;padding:18px 12px !important}
+  [data-r=fichaKpis] > div:last-child:nth-child(odd){grid-column:1 / -1 !important}
+  [data-r=raiz] [data-r=fichaKpis] [data-cifra]{font-size:26px !important}
+  [data-r=fichaKpis] p + p{font-size:14px !important}
+  [data-r=compMando]{width:46px !important;height:46px !important}
+  [data-r=compEtq]{top:10px !important;font-size:12px !important;padding:4px 10px !important;letter-spacing:.04em !important}
+  [data-r=fichaPortada] span{left:10px !important;bottom:10px !important;padding:6px 10px !important}
+  [data-r=fichaPortada] span img{height:46px !important}
+  [data-r=compLogo]{left:10px !important;bottom:10px !important;padding:6px 10px !important}
+  [data-r=compLogo] img{height:46px !important}
+}
     </style>
 </helmet>
 
-<div ref="{{ refRaiz }}" style="background:#297AB1;width:1920px">
+<div data-r="raiz" ref="{{ refRaiz }}" style="background:#297AB1;width:1920px">
 
   <header ref="{{ refNav }}" style="position:sticky;top:0;z-index:60">
     <div data-nav="panel" style="position:absolute;left:0;right:0;top:0;bottom:-34px;backdrop-filter:blur(22px) saturate(1.35);-webkit-backdrop-filter:blur(22px) saturate(1.35);background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.16));clip-path:polygon(0% 0%, 100% 0%, 100.00% 92.47%, 98.44% 91.62%, 96.88% 90.70%, 95.31% 89.71%, 93.75% 88.68%, 92.19% 87.64%, 90.63% 86.60%, 89.06% 85.59%, 87.50% 84.62%, 85.94% 83.70%, 84.38% 82.86%, 82.81% 82.09%, 81.25% 81.41%, 79.69% 80.82%, 78.13% 80.32%, 76.56% 79.90%, 75.00% 79.56%, 73.44% 79.30%, 71.88% 79.09%, 70.31% 78.94%, 68.75% 78.84%, 67.19% 78.76%, 65.63% 78.70%, 64.06% 78.65%, 62.50% 78.61%, 60.94% 78.57%, 59.38% 78.52%, 57.81% 78.46%, 56.25% 78.41%, 54.69% 78.35%, 53.13% 78.29%, 51.56% 78.26%, 50.00% 78.24%, 48.44% 78.27%, 46.88% 78.34%, 45.31% 78.46%, 43.75% 78.66%, 42.19% 78.94%, 40.63% 79.31%, 39.06% 79.77%, 37.50% 80.33%, 35.94% 80.99%, 34.38% 81.74%, 32.81% 82.58%, 31.25% 83.51%, 29.69% 84.50%, 28.13% 85.55%, 26.56% 86.63%, 25.00% 87.72%, 23.44% 88.81%, 21.88% 89.87%, 20.31% 90.88%, 18.75% 91.82%, 17.19% 92.66%, 15.63% 93.39%, 14.06% 93.99%, 12.50% 94.44%, 10.94% 94.74%, 9.38% 94.88%, 7.81% 94.86%, 6.25% 94.67%, 4.69% 94.33%, 3.13% 93.84%, 1.56% 93.21%, 0.00% 92.47%);transition:background .35s ease"></div>
     <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" style="position:absolute;left:0;right:0;top:0;bottom:-34px;width:100%;height:calc(100% + 34px);display:block;pointer-events:none;overflow:visible">
       <polyline data-nav="linea" points="0.0,924.7 15.6,932.1 31.3,938.4 46.9,943.3 62.5,946.7 78.1,948.6 93.8,948.8 109.4,947.4 125.0,944.4 140.6,939.9 156.3,933.9 171.9,926.6 187.5,918.2 203.1,908.8 218.8,898.7 234.4,888.1 250.0,877.2 265.6,866.3 281.3,855.5 296.9,845.0 312.5,835.1 328.1,825.8 343.8,817.4 359.4,809.9 375.0,803.3 390.6,797.7 406.3,793.1 421.9,789.4 437.5,786.6 453.1,784.6 468.8,783.4 484.4,782.7 500.0,782.4 515.6,782.6 531.3,782.9 546.9,783.5 562.5,784.1 578.1,784.6 593.8,785.2 609.4,785.7 625.0,786.1 640.6,786.5 656.3,787.0 671.9,787.6 687.5,788.4 703.1,789.4 718.8,790.9 734.4,793.0 750.0,795.6 765.6,799.0 781.3,803.2 796.9,808.2 812.5,814.1 828.1,820.9 843.8,828.6 859.4,837.0 875.0,846.2 890.6,855.9 906.3,866.0 921.9,876.4 937.5,886.8 953.1,897.1 968.8,907.0 984.4,916.2 1000.0,924.7" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="3" vector-effect="non-scaling-stroke" style="transition:stroke .35s ease"></polyline>
     </svg>
-    <div style="position:relative;display:flex;align-items:center;gap:56px;padding:45px 100px 30px">
-      <a href="#top" onClick="{{ irHome }}" style="flex:none;display:block;position:relative;width:82px;height:88px">
+    <div data-r="hdr" style="position:relative;display:flex;align-items:center;gap:56px;padding:45px 100px 30px">
+      <a data-r="logo" href="#top" onClick="{{ irHome }}" style="flex:none;display:block;position:relative;width:82px;height:88px">
         <img data-nav="logoBlanco" src="assets/logo-wp-blanco.svg" alt="Water Positive 2030" style="position:absolute;inset:0;width:82px;height:88px;object-fit:contain;transition:opacity .35s ease">
         <img data-nav="logoAzul" src="assets/logo-wp.svg" alt="" style="position:absolute;inset:0;width:82px;height:88px;object-fit:contain;opacity:0;transition:opacity .35s ease">
       </a>
-      <nav style="flex:1;display:flex;align-items:center;justify-content:flex-end;gap:44px">
+      <nav data-r="navDesk" style="flex:1;display:flex;align-items:center;justify-content:flex-end;gap:44px">
         <a href="#ambicion" onClick="{{ irSeccion }}" style="color:#fff;font-size:18px;white-space:nowrap" style-hover="color:#EAF6FA;opacity:.75">¿Qué es Water Positive 2030?</a>
         <a href="#fabrica" onClick="{{ irSeccion }}" style="color:#fff;font-size:18px;white-space:nowrap" style-hover="color:#EAF6FA;opacity:.75">Fábrica</a>
         <a href="#guardianes" onClick="{{ irSeccion }}" style="color:#fff;font-size:18px;white-space:nowrap" style-hover="color:#EAF6FA;opacity:.75">Guardianes del Tajo</a>
         <a href="#mizuiku" onClick="{{ irSeccion }}" style="color:#fff;font-size:18px;white-space:nowrap" style-hover="color:#EAF6FA;opacity:.75">Mizuiku</a>
         <a href="#docs" onClick="{{ irDocs }}" style="color:#fff;font-size:18px;white-space:nowrap" style-hover="color:#EAF6FA;opacity:.75">Documentos de Interés</a>
         <a href="#noticias" onClick="{{ irNoticias }}" style="color:#fff;font-size:18px;white-space:nowrap" style-hover="color:#EAF6FA;opacity:.75">Noticias</a>
-        <a href="#actividades" onClick="{{ irActividades }}" style="color:#fff;font-size:18px;white-space:nowrap" style-hover="color:#EAF6FA;opacity:.75">Actividades</a>
+        <a href="#actividades" onClick="{{ irActividades }}" style="color:#fff;font-size:18px;white-space:nowrap" style-hover="color:#EAF6FA;opacity:.75">Otras iniciativas</a>
       </nav>
+      <button data-r="burger" onClick="{{ abrirMenu }}" aria-label="Abrir menú" aria-expanded="{{ menuAbierto }}" style="display:none;flex:none;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1.5px solid currentColor;background:transparent;color:#fff;cursor:pointer;transition:color .35s ease">
+        <svg viewBox="0 0 24 24" stroke-width="2.18" stroke-linecap="round" fill="none" stroke="currentColor" style="width:22px;height:22px" aria-hidden="true"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg>
+      </button>
     </div>
   </header>
 
@@ -57,55 +221,55 @@ input{font-family:inherit}
   <div id="top">
 
     <div style="position:relative;margin-top:-144px">
-      <div ref="{{ refCapa }}" style="position:sticky;top:0;height:1080px;z-index:0;margin:0 48px;border-radius:34px;overflow:hidden;background:#12435F">
+      <div data-r="heroCapa" ref="{{ refCapa }}" style="position:sticky;top:0;height:1080px;z-index:0;margin:0 48px;border-radius:34px;overflow:hidden;background:#12435F">
         <img src="assets/foto-visita.png" alt="Embalse de Guajaraz" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
         <video ref="{{ refVideo }}" src="assets/video-embalse.webm" data-fade="1" preload="auto" autoplay="" muted="" loop="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease"></video>
         <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,38,60,.6) 0%,rgba(8,38,60,.18) 20%,rgba(8,38,60,.3) 100%),radial-gradient(ellipse 62% 48% at 46% 47%,rgba(6,28,46,.5),rgba(6,28,46,0) 72%)"></div>
       </div>
       <div ref="{{ refCapaTexto }}" style="position:relative;z-index:1;margin-top:-1080px">
 
-      <div id="hero" ref="{{ refHero }}" style="height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:144px 100px 0;position:relative">
-        <div style="display:flex;align-items:center;gap:70px">
-          <img src="assets/logo-wp-blanco.svg" alt="" style="width:450px;flex:none;display:block;filter:drop-shadow(0 8px 30px rgba(4,24,40,.35))">
+      <div data-r="hero" id="hero" ref="{{ refHero }}" style="height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:144px 100px 0;position:relative">
+        <div data-r="heroFila" style="display:flex;align-items:center;gap:70px">
+          <img data-r="heroLogo" src="assets/logo-wp-blanco.svg" alt="" style="width:450px;flex:none;display:block;filter:drop-shadow(0 8px 30px rgba(4,24,40,.35))">
           
-          <div style="display:flex;flex-direction:column;align-items:flex-start;gap:10px;max-width:1070px;position:relative">
-            <p style="font-size:36px;color:#fff;font-weight:400;letter-spacing:.2px;text-shadow:0 2px 20px rgba(6,28,46,.5)">Water Positive 2030</p>
-            <h1 style="font-size: 74px; line-height: 1.1; font-weight: 700; color: #fff; text-shadow: 0 3px 26px rgba(6,28,46,.5); width: 963px; height: 154px">Devolver a la naturaleza más agua de la que usamos.</h1>
+          <div data-r="heroTexto" style="display:flex;flex-direction:column;align-items:flex-start;gap:10px;max-width:1070px;position:relative">
+            <p data-r="heroKicker" style="font-size:36px;color:#fff;font-weight:400;letter-spacing:.2px;text-shadow:0 2px 20px rgba(6,28,46,.5)">Water Positive 2030</p>
+            <h1 data-r="heroH1" style="font-size: 74px; line-height: 1.1; font-weight: 700; color: #fff; text-shadow: 0 3px 26px rgba(6,28,46,.5); width: 963px; height: 154px">Devolver a la naturaleza más agua de la que usamos.</h1>
             <a href="#ambicion" onClick="{{ irAmbicion }}" style="margin-top:30px;width:44px;height:44px;border:1.5px solid rgba(255,255,255,.7);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;background:linear-gradient(150deg,rgba(20,74,110,.5),rgba(12,52,80,.6));backdrop-filter:blur(20px) saturate(1.2);-webkit-backdrop-filter:blur(20px) saturate(1.2);animation:flotar 2.6s ease-in-out infinite" style-hover="background:rgba(255,255,255,.22);color:#fff">
-              <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:18px;height:18px"><path d="M12 4v15"></path><path d="M6 13l6 6 6-6"></path></svg>
+              <svg viewBox="0 0 24 24" stroke-width="2.67" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:18px;height:18px"><path d="M12 4v15"></path><path d="M6 13l6 6 6-6"></path></svg>
             </a>
           </div>
         </div>
-        <a href="#ambicion" onClick="{{ irAmbicion }}" style="position:absolute;right:100px;bottom:70px;display:flex;align-items:center;gap:20px;border:1.5px solid rgba(255,255,255,.85);border-radius:999px;padding:12px 14px 12px 28px;color:#fff;font-size:19px;background:linear-gradient(150deg,rgba(20,74,110,.5),rgba(12,52,80,.6));backdrop-filter:blur(20px) saturate(1.2);-webkit-backdrop-filter:blur(20px) saturate(1.2);transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:rgba(255,255,255,.32);color:#fff;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
+        <a data-r="heroCta" href="#ambicion" onClick="{{ irAmbicion }}" style="position:absolute;right:100px;bottom:70px;display:flex;align-items:center;gap:20px;border:1.5px solid rgba(255,255,255,.85);border-radius:999px;padding:12px 14px 12px 28px;color:#fff;font-size:19px;background:linear-gradient(150deg,rgba(20,74,110,.5),rgba(12,52,80,.6));backdrop-filter:blur(20px) saturate(1.2);-webkit-backdrop-filter:blur(20px) saturate(1.2);transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:rgba(255,255,255,.32);color:#fff;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
           Conoce nuestros proyectos
           <span style="width:44px;height:44px;border:1.5px solid rgba(255,255,255,.85);border-radius:50%;display:flex;align-items:center;justify-content:center">
-            <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px"><path d="M4 12h15"></path><path d="M13 6l6 6-6 6"></path></svg>
+            <svg viewBox="0 0 24 24" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px"><path d="M4 12h15"></path><path d="M13 6l6 6-6 6"></path></svg>
           </span>
         </a>
         
       </div>
 
-      <div id="intro" style="position:relative;padding:90px 100px 0">
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 40px 46px">
+      <div data-r="intro" id="intro" style="position:relative;padding:90px 100px 0">
+        <div data-r="introFotos" style="display:flex;align-items:center;justify-content:space-between;padding:0 40px 46px">
           <img data-parallax="34" data-rot="-6" src="assets/foto-osmosis.png" alt="" style="width:300px;height:188px;object-fit:cover;border-radius:12px;border:1px solid #fff;transform:rotate(-6deg);box-shadow:0 14px 30px rgba(6,38,62,.34);display:block">
           <svg viewBox="0 0 600 110" preserveAspectRatio="none" style="flex:1;height:96px;margin:0 46px">
             <path d="M4,64 C150,116 300,4 596,26" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="14 12" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
           </svg>
           <img data-parallax="-26" data-rot="3" src="assets/foto-visita.png" alt="" style="width:320px;height:200px;object-fit:cover;border-radius:12px;border:1px solid #fff;transform:rotate(3deg);box-shadow:0 14px 30px rgba(6,38,62,.34);display:block">
         </div>
-        <div data-anim="1" style="max-width:1720px;margin:10px auto 0;padding:60px 0">
+        <div data-r="introTexto" data-anim="1" style="max-width:1720px;margin:10px auto 0;padding:60px 0">
         <p style="max-width:1580px;margin:0 auto;text-align:center;color:#fff;font-size:21px;line-height:1.422;text-shadow:0 2px 16px rgba(6,28,46,.55)">El agua es uno de los recursos más valiosos y esenciales del planeta, y nuestro principal ingrediente. Por eso en Suntory Beverage &amp; Food Iberia vamos más allá de reducir su consumo en la fabricación de nuestros productos, trabajamos hacia la regeneración hídrica activa fuera de los muros de nuestras instalaciones. Conscientes de que los impactos del agua son estrictamente locales, actuamos en las cuencas de influencia donde operamos, para proteger el ciclo del agua, contribuir a su conservación, mejorando su calidad y desarrollando acciones para aumentar su disponibilidad para todos, las comunidades y también los ecosistemas.</p>
         <h2 style="text-align:center;color:#fff;font-size:56px;font-weight:700;margin:52px 0 30px;text-shadow:0 3px 22px rgba(6,28,46,.55)">Nuestra ambición es ser Water Positive en 2030</h2>
         <p style="max-width:1400px;margin:0 auto;text-align:center;color:#fff;font-size:21px;line-height:1.422;text-shadow:0 2px 16px rgba(6,28,46,.55)">Este compromiso aplica a nuestra fábrica ubicada en Toledo e incluye el uso del agua como ingrediente principal, así como los usos auxiliares vinculados a la actividad industrial, como las tareas de limpieza y mantenimiento.</p>
         </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:64px 120px 0">
+        <div data-r="introFotos" style="display:flex;align-items:center;justify-content:space-between;padding:64px 120px 0">
           <img data-parallax="30" data-rot="6" src="assets/foto-plantacion.png" alt="" style="width:340px;height:212px;object-fit:cover;border-radius:12px;border:1px solid #fff;transform:rotate(6deg);box-shadow:0 14px 30px rgba(6,38,62,.34);display:block">
           <svg viewBox="0 0 600 110" preserveAspectRatio="none" style="flex:1;height:86px;margin:0 40px">
             <path d="M4,88 C170,120 330,10 596,22" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="14 12" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
           </svg>
           <img data-parallax="-30" data-rot="-5" src="assets/foto-teatro.png" alt="" style="width:300px;height:186px;object-fit:cover;border-radius:12px;border:1px solid #fff;transform:rotate(-5deg);box-shadow:0 14px 30px rgba(6,38,62,.34);display:block">
         </div>
-        <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style="display:block;width:calc(100% + 200px);height:96px;margin:56px -100px -1px">
+        <svg data-r="olaPie" viewBox="0 0 1440 90" preserveAspectRatio="none" style="display:block;width:calc(100% + 200px);height:96px;margin:56px -100px -1px">
           <path d="M0,44 C230,96 470,4 760,26 C1030,46 1240,80 1440,58 L1440,90 L0,90 Z" fill="#fff"></path>
         </svg>
       </div>
@@ -113,12 +277,12 @@ input{font-family:inherit}
       </div>
     </div>
 
-    <div id="ambicion" ref="{{ refClaro }}" style="background:#fff;padding:130px 100px 130px">
-      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:90px;align-items:center">
+    <div data-r="secClara" id="ambicion" ref="{{ refClaro }}" style="background:#fff;padding:130px 100px 130px">
+      <div data-r="g2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:90px;align-items:center">
         <div data-anim="1">
           <h2 style="font-size:44px;font-weight:700;color:#297AB1;line-height:1.15">Nuestra ambición Water Positive</h2>
           <p style="margin-top:24px;font-size:17px;line-height:1.47;color:#297AB1">Water Positive significa devolver a la naturaleza y a las comunidades <strong>más agua de la que utilizamos en la elaboración de nuestras bebidas.</strong> Para lograrlo, no basta con reducir el consumo: es necesario actuar en todo el ciclo del agua, <strong>desde su origen hasta su uso y regeneración,</strong> buscando la mejora de su calidad y disponibilidad. En Suntory Beverage &amp; Food Iberia este compromiso se basa en tres pilares:</p>
-          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:30px">
+          <div data-r="pilares" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:30px">
             <div style="background:#297AB1;border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:16px;min-height:104px;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
               <span style="font-size:36px;font-weight:700;color:#fff;line-height:1">1</span>
               <span style="font-size:15px;line-height:1.28;color:#fff">Uso eficiente del agua en nuestras fábricas, mediante la reducción y reutilización.</span>
@@ -132,11 +296,11 @@ input{font-family:inherit}
               <span style="font-size:15px;line-height:1.28;color:#fff">Educar y concienciar sobre el valor del agua a las futuras generaciones.</span>
             </div>
           </div>
-          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-top:34px">
+          <div data-r="filaVerMas" style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-top:34px">
             <p style="font-size:16px;line-height:1.42;color:#297AB1;font-style:italic;max-width:520px">Todo ello apoyado en <strong>la ciencia, los datos y la colaboración</strong> con administraciones, expertos y comunidades locales.</p>
             <a href="#docs" onClick="{{ irDocs }}" style="flex:none;display:flex;align-items:center;gap:12px;background:#297AB1;color:#fff;border-radius:999px;padding:13px 26px;font-size:17px;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#1F6390;color:#fff;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
               Ver más
-              <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px"><path d="M4 12h15"></path><path d="M13 6l6 6-6 6"></path></svg>
+              <svg viewBox="0 0 24 24" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px"><path d="M4 12h15"></path><path d="M13 6l6 6-6 6"></path></svg>
             </a>
           </div>
           <p style="margin-top:38px;font-size:17px;line-height:1.47;color:#297AB1">Nuestra ambición de devolver agua a la naturaleza no es solo un compromiso de sostenibilidad. Ante un cambio climático estructural que vuelve el recurso hídrico cada vez más impredecible, <strong>garantizar la salud, la resiliencia y la disponibilidad de agua en nuestras cuencas</strong> de influencia supone un auténtico seguro de vida, asegurando la viabilidad y la competitividad futura de la compañía. Representa, por tanto, una acción global en la que cada función asume su responsabilidad y, juntos, <strong>unimos esfuerzos para alcanzar el objetivo de ser Water Positive para 2030.</strong></p>
@@ -147,24 +311,24 @@ input{font-family:inherit}
       </div>
     </div>
 
-    <div id="fabrica" style="position:relative;padding:0 48px">
-      <div style="position:relative;min-height:1080px">
+    <div data-r="secVideo" id="fabrica" style="position:relative;padding:0 48px">
+      <div data-r="altoVideo" style="position:relative;min-height:1080px">
         <div style="position:absolute;inset:0;border-radius:34px;overflow:hidden;background:#8b877f">
   <video ref="{{ refVideo }}" src="assets/video-fabrica.mp4" poster="assets/poster-fabrica.png" preload="metadata" data-lazy="1" muted="" loop="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(20,50,70,.12) 55%,rgba(20,50,70,.25))"></div>
         </div>
-        <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style="position:absolute;top:-1px;left:-48px;width:calc(100% + 96px);height:96px;display:block">
+        <svg data-r="olaVideo" viewBox="0 0 1440 90" preserveAspectRatio="none" style="position:absolute;top:-1px;left:-48px;width:calc(100% + 96px);height:96px;display:block">
           <path d="M0,0 L1440,0 L1440,58 C1240,80 1030,46 760,26 C470,4 230,96 0,44 Z" fill="#fff"></path>
         </svg>
-        <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style="position:absolute;bottom:-1px;left:-48px;width:calc(100% + 96px);height:96px;display:block">
+        <svg data-r="olaVideo" viewBox="0 0 1440 90" preserveAspectRatio="none" style="position:absolute;bottom:-1px;left:-48px;width:calc(100% + 96px);height:96px;display:block">
           <path d="M0,44 C230,96 470,4 760,26 C1030,46 1240,80 1440,58 L1440,90 L0,90 Z" fill="#fff"></path>
         </svg>
-        <div style="position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:90px;align-items:center;padding:200px 100px 210px">
-          <div data-anim="1" style="background:linear-gradient(150deg,rgba(20,74,110,.62),rgba(12,52,80,.72));backdrop-filter:blur(28px) saturate(1.2);-webkit-backdrop-filter:blur(28px) saturate(1.2);border:1px solid rgba(91,194,220,.85);border-radius:24px;padding:48px 46px;box-shadow:0 24px 60px rgba(4,24,40,.3)">
+        <div data-r="gridVideo" style="position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:90px;align-items:center;padding:200px 100px 210px">
+          <div data-r="vidrio" data-anim="1" style="background:linear-gradient(150deg,rgba(20,74,110,.62),rgba(12,52,80,.72));backdrop-filter:blur(28px) saturate(1.2);-webkit-backdrop-filter:blur(28px) saturate(1.2);border:1px solid rgba(91,194,220,.85);border-radius:24px;padding:48px 46px;box-shadow:0 24px 60px rgba(4,24,40,.3)">
             <h2 style="font-size: 44px; font-weight: 700; color: #5BC2DC">Uso eficiente del agua en nuestra fábrica.</h2>
             <p style="margin-top: 24px; font-size: 17px; line-height: 1.42; color: #FFFFFF">Dependemos 100% del agua para nuestra actividad. En un contexto de creciente escasez, mejorar la eficiencia hídrica es clave para garantizar la sostenibilidad de nuestras operaciones. Por ello, hemos invertido en nuevas tecnologías y modernizado nuestros procesos. Estas acciones nos permiten medir con mayor precisión el consumo, identificar oportunidades de mejora, eficiencias y mejoras en nuestra capacidad para reducir y reutilizar el agua utilizada.</p>
             <p style="margin-top: 22px; font-size: 17px; line-height: 1.42; color: #FFFFFF">Nuestro objetivo es <strong>reducir un 20% el consumo de agua por litro de bebida en 2030</strong> respecto a 2015.</p>
-            <div style="display:grid;grid-template-columns:repeat(2,260px);justify-content:center;gap:22px;margin-top:28px">
+            <div data-r="kpiFabrica" style="display:grid;grid-template-columns:repeat(2,260px);justify-content:center;gap:22px;margin-top:28px">
               <div style="background:linear-gradient(150deg,rgba(20,74,110,.6),rgba(12,52,80,.7));backdrop-filter:blur(24px) saturate(1.2);-webkit-backdrop-filter:blur(24px) saturate(1.2);border:1.5px solid rgba(91,194,220,.85);border-radius:12px;padding:26px 22px;text-align:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
                 <p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05">2,18 l</p>
                 <p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty">de agua por litro de producto fabricado en 2015</p>
@@ -172,6 +336,31 @@ input{font-family:inherit}
               <div style="background:linear-gradient(150deg,rgba(20,74,110,.6),rgba(12,52,80,.7));backdrop-filter:blur(24px) saturate(1.2);-webkit-backdrop-filter:blur(24px) saturate(1.2);border:1.5px solid rgba(91,194,220,.85);border-radius:12px;padding:26px 22px;text-align:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
                 <p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05">2,01 l</p>
                 <p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty">de agua por litro de producto fabricado en 2025</p>
+              </div>
+            </div>
+            <div data-r="destacado" style="margin-top:22px;background:#fff;border-radius:12px;padding:22px 28px;display:flex;align-items:center;gap:26px;box-shadow:0 14px 30px rgba(4,24,40,.22)">
+              <p data-cifra="1" style="flex:none;font-size:44px;font-weight:700;line-height:1.05;color:#297AB1">+35.000 m³</p>
+              <p style="font-size:17px;line-height:1.35;color:#297AB1;text-wrap:pretty"><strong>Más de 35.000 m³ de agua ahorrada al año</strong> gracias a las acciones de eficiencia en fábrica.</p>
+            </div>
+            <button data-r="btnFila" onClick="{{ toggleFabrica }}" aria-expanded="{{ fabricaAbierta }}" style="margin-top:22px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;background:rgba(255,255,255,.16);border:1px solid #fff;border-radius:12px;padding:20px 22px;cursor:pointer;color:#fff;font-family:inherit;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease" style-hover="background:rgba(255,255,255,.3);transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
+              <span style="font-size:19px;font-weight:700;color:#fff">Acciones de eficiencia en fábrica</span>
+              <span style="display:flex;align-items:center;gap:14px;font-size:17px;color:#fff">{{ fabricaTextoBoton }}
+                <svg viewBox="0 0 40 40" stroke-width="1.82" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px;transform:{{ fabricaGiro }};transition:transform .6s cubic-bezier(.65,0,.35,1)" aria-hidden="true"><circle cx="20" cy="20" r="18" stroke-width="1.36"></circle><path d="M13 17l7 7 7-7"></path></svg>
+              </span>
+            </button>
+            <div data-r="fabricaPliegue" aria-hidden="{{ fabricaOculta }}" style="display:grid;grid-template-rows:{{ fabricaFilas }};opacity:{{ fabricaOpacidad }};margin-top:{{ fabricaMargen }};transition:grid-template-rows .6s cubic-bezier(.65,0,.35,1),opacity .5s cubic-bezier(.65,0,.35,1),margin-top .6s cubic-bezier(.65,0,.35,1)">
+              <div style="min-height:0;overflow:hidden">
+                  <div style="background:rgba(255,255,255,.12);border:1px solid rgba(91,194,220,.55);border-radius:16px;padding:26px 28px">
+                    <p style="font-size:17px;line-height:1.42;color:#fff">Desde 2022 se han puesto en marcha mejoras para reducir el agua que utilizamos y aprovechar mejor la que ya ha pasado por nuestros procesos:</p>
+                    <ul style="list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:14px">
+                      <sc-for list="{{ accionesFabrica }}" as="x" hint-placeholder-count="5">
+                        <li style="display:flex;align-items:flex-start;gap:16px">
+                          <span style="flex:none;background:#5BC2DC;color:#fff;border-radius:999px;padding:4px 12px;font-size:14px;font-weight:700;line-height:1.3">{{ x.anio }}</span>
+                          <p style="font-size:16px;line-height:1.42;color:#fff"><strong>{{ x.titulo }}:</strong> {{ x.texto }}</p>
+                        </li>
+                      </sc-for>
+                    </ul>
+                  </div>
               </div>
             </div>
           </div>
@@ -186,28 +375,28 @@ input{font-family:inherit}
       </div>
     </div>
 
-    <div id="guardianes" style="position:relative;padding:0 48px">
-      <div style="position:relative;min-height:1080px">
+    <div data-r="secVideo" id="guardianes" style="position:relative;padding:0 48px">
+      <div data-r="altoVideo" style="position:relative;min-height:1080px">
         <div style="position:absolute;inset:0;border-radius:34px;overflow:hidden;background:#123043">
   <video ref="{{ refVideo }}" src="assets/video-guardianes.mp4" poster="assets/poster-guardianes.png" preload="metadata" data-lazy="1" muted="" loop="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,34,52,.42),rgba(9,34,52,.28) 45%,rgba(9,34,52,.5))"></div>
         </div>
-        <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style="position:absolute;top:-1px;left:-48px;width:calc(100% + 96px);height:96px;display:block">
+        <svg data-r="olaVideo" viewBox="0 0 1440 90" preserveAspectRatio="none" style="position:absolute;top:-1px;left:-48px;width:calc(100% + 96px);height:96px;display:block">
           <path d="M0,0 L1440,0 L1440,58 C1240,80 1030,46 760,26 C470,4 230,96 0,44 Z" fill="#fff"></path>
         </svg>
-        <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style="position:absolute;bottom:-1px;left:-48px;width:calc(100% + 96px);height:96px;display:block">
+        <svg data-r="olaVideo" viewBox="0 0 1440 90" preserveAspectRatio="none" style="position:absolute;bottom:-1px;left:-48px;width:calc(100% + 96px);height:96px;display:block">
           <path d="M0,44 C230,96 470,4 760,26 C1030,46 1240,80 1440,58 L1440,90 L0,90 Z" fill="#fff"></path>
         </svg>
-        <div style="position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:90px;align-items:center;padding:200px 100px 210px">
+        <div data-r="gridVideo" style="position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:90px;align-items:center;padding:200px 100px 210px">
           <div data-anim="1" style="display:flex;justify-content:center">
-            <img src="assets/logo-gdt-blanco.png" alt="Guardianes del Tajo" style="width:88%;max-width:580px;display:block;filter:drop-shadow(0 10px 30px rgba(6,30,48,.45))">
+            <img data-r="logoGdt" src="assets/logo-gdt-blanco.png" alt="Guardianes del Tajo" style="width:88%;max-width:580px;display:block;filter:drop-shadow(0 10px 30px rgba(6,30,48,.45))">
           </div>
-          <div data-anim="1" style="padding:44px 46px;border-radius:24px;background:linear-gradient(150deg,rgba(20,74,110,.62),rgba(12,52,80,.72));backdrop-filter:blur(28px) saturate(1.2);-webkit-backdrop-filter:blur(28px) saturate(1.2);border:1px solid rgba(91,194,220,.85);box-shadow:0 24px 60px rgba(4,24,40,.3)">
+          <div data-r="vidrio" data-anim="1" style="padding:44px 46px;border-radius:24px;background:linear-gradient(150deg,rgba(20,74,110,.62),rgba(12,52,80,.72));backdrop-filter:blur(28px) saturate(1.2);-webkit-backdrop-filter:blur(28px) saturate(1.2);border:1px solid rgba(91,194,220,.85);box-shadow:0 24px 60px rgba(4,24,40,.3)">
             <h2 style="font-size:44px;font-weight:700;color:#fff">Actuar en el origen del agua</h2>
             <p style="margin-top:22px;font-size:17px;line-height:1.42;color:#fff">Guardianes del Tajo es nuestro proyecto emblemático en España para <strong>proteger y restaurar los recursos hídricos en el entorno de la cuenca del Tajo.</strong> Se desarrolla, entre otros, en la zona del embalse de Guajaraz, fuente clave para el abastecimiento de nuestra planta de Toledo y del entorno local, con un objetivo claro:</p>
             <p style="margin-top:22px;font-size:17px;line-height:1.42;color:#fff;font-weight:700">Mejorar la cantidad y la calidad del agua a largo plazo, así como la biodiversidad de la zona.</p>
             <p style="margin-top:22px;font-size:17px;line-height:1.42;color:#fff">El proyecto persigue un enfoque integral con los siguientes objetivos:</p>
-            <div style="margin-top:26px;background:rgba(255,255,255,.12);border:1px solid rgba(91,194,220,.55);border-radius:24px;padding:30px 32px;display:flex;flex-direction:column;gap:18px">
+            <div data-r="cajaObj" style="margin-top:26px;background:rgba(255,255,255,.12);border:1px solid rgba(91,194,220,.55);border-radius:24px;padding:30px 32px;display:flex;flex-direction:column;gap:18px">
               <p style="font-size:17px;line-height:1.42;color:#fff"><span style="color:#5BC2DC;font-weight:700">· Agua:</span> Mejorar la calidad y cantidad del agua disponible, cuantificando los beneficios mediante el marco VWBA (Volumetric Water Benefit Accounting).</p>
               <p style="font-size:17px;line-height:1.42;color:#fff"><span style="color:#5BC2DC;font-weight:700">· Biodiversidad:</span> Restaurar hábitats degradados, proteger especies nativas, controlar invasoras y establecer indicadores para el seguimiento a largo plazo.</p>
               <p style="font-size:17px;line-height:1.42;color:#fff"><span style="color:#5BC2DC;font-weight:700">· Resiliencia Climática:</span> Fomentar la adaptación al cambio climático implementando Soluciones basadas en Naturaleza (SbN) para mitigar los efectos dañinos de inundaciones y sequías y su posible afección a las instalaciones de la fábrica de Toledo.</p>
@@ -218,8 +407,8 @@ input{font-family:inherit}
       </div>
     </div>
 
-    <div ref="{{ refClaro }}" style="background:#fff;padding:130px 100px 0">
-      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:90px;align-items:stretch">
+    <div data-r="secClara" ref="{{ refClaro }}" style="background:#fff;padding:130px 100px 0">
+      <div data-r="g2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:90px;align-items:stretch">
         <div style="display:flex;flex-direction:column">
           <h2 data-anim="1" style="font-size:44px;font-weight:700;color:#297AB1;line-height:1.15">Un proyecto que nace del territorio</h2>
           <p style="margin-top:22px;font-size:17px;line-height:1.47;color:#297AB1">En 2021, Guardianes del Tajo se definió mediante un <strong>proceso participativo con actores locales</strong>, identificando la cuenca del embalse de Guajaraz como área prioritaria e inicial de actuación. Este territorio tiene un papel estratégico ya que <strong>abastece a la ciudad de Toledo y suministra agua a nuestra planta.</strong></p>
@@ -232,7 +421,7 @@ input{font-family:inherit}
         <div style="display:flex;flex-direction:column">
           <h2 data-anim="1" style="font-size:44px;font-weight:700;color:#297AB1;line-height:1.15">Un entorno con grandes desafíos</h2>
           <p style="margin-top:22px;font-size:17px;line-height:1.47;color:#297AB1">La cuenca del embalse de Guajaraz y su entorno presentan una <strong>elevada vulnerabilidad hídrica y ambiental</strong>, derivada tanto de presiones históricas como de los efectos crecientes del cambio climático. Los análisis iniciales realizados en 2021, junto con los estudios científicos desarrollados posteriormente, han identificado una serie de retos clave:</p>
-          <ol data-anim="1" style="margin:28px 0 0;padding:28px 34px 28px 56px;border:1.5px solid #297AB1;border-radius:12px;display:flex;flex-direction:column;gap:16px;color:#5BC2DC;font-size:17px;line-height:1.42">
+          <ol data-r="listaRetos" data-anim="1" style="margin:28px 0 0;padding:28px 34px 28px 56px;border:1.5px solid #297AB1;border-radius:12px;display:flex;flex-direction:column;gap:16px;color:#5BC2DC;font-size:17px;line-height:1.42">
             <li style="color:#5BC2DC">Presión sobre la calidad del agua, asociada principalmente a fuentes difusas de origen agrícola y ganadero, así como a infraestructuras de tratamiento existentes.</li>
             <li style="color:#297AB1">Degradación de ecosistemas, incluyendo el deterioro de hábitats fluviales y del monte mediterráneo, pérdidas de biodiversidad y presencia de especies invasoras.</li>
             <li style="color:#5BC2DC">Procesos de erosión y sedimentación, que afectan al funcionamiento natural de la cuenca y a la capacidad de los embalses.</li>
@@ -240,65 +429,66 @@ input{font-family:inherit}
             <li style="color:#5BC2DC">Incremento de eventos extremos, como episodios de lluvias intensas e inundaciones repentinas, evidenciados en fenómenos recientes como la DANA de septiembre del 2023.</li>
           </ol>
           <p style="margin-top:26px;font-size:17px;line-height:1.47;color:#297AB1">Este contexto refuerza la necesidad de un enfoque integral, basado en la ciencia y en la implementación de soluciones adaptadas al territorio, que permitan mejorar la resiliencia hídrica y ecológica de la cuenca.</p>
-          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-top:auto;padding-top:26px">
-            <p style="font-size:16px;line-height:1.42;color:#297AB1;font-style:italic;max-width:560px">Para más información sobre los <strong>estudios e informes técnicos</strong> realizados, consulta el apartado “Documentación”.</p>
+          <div data-r="filaVerMas" style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-top:auto;padding-top:26px">
+            <p style="font-size:16px;line-height:1.42;color:#297AB1;font-style:italic;max-width:560px">Para más información sobre los <strong>estudios e informes técnicos</strong> realizados, consulta el apartado “Documentos de interés”.</p>
             <a href="#docs" onClick="{{ irDocs }}" style="flex:none;display:flex;align-items:center;gap:12px;background:#297AB1;color:#fff;border-radius:999px;padding:13px 26px;font-size:17px;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#1F6390;color:#fff;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
               Ver más
-              <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px"><path d="M4 12h15"></path><path d="M13 6l6 6-6 6"></path></svg>
+              <svg viewBox="0 0 24 24" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px"><path d="M4 12h15"></path><path d="M13 6l6 6-6 6"></path></svg>
             </a>
           </div>
         </div>
       </div>
     </div>
 
-    <div ref="{{ refClaro }}" style="background:#fff;padding:90px 100px 140px">
-      <div style="display:grid;grid-template-columns:560px minmax(0,1fr);gap:120px;align-items:stretch">
+    <div data-r="secClara" ref="{{ refClaro }}" style="background:#fff;padding:90px 100px 140px">
+      <div data-r="g2" data-g="acciones" style="display:grid;grid-template-columns:560px minmax(0,1fr);gap:120px;align-items:stretch">
         <div style="display:flex;flex-direction:column;gap:20px">
           <h2 data-anim="1" style="font-size:44px;font-weight:700;color:#297AB1">Nuestras acciones</h2>
         <div data-anim="1" style="display:flex;flex-direction:column;justify-content:space-between;gap:22px;flex:1">
           <a href="#guardianes" onClick="{{ abrirProyecto }}" style="cursor:pointer;display:flex;align-items:center;gap:20px;border:1.5px solid #297AB1;border-radius:12px;padding:20px 22px;color:#297AB1;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease,border-color .35s ease" style-hover="background:#F2FAFD;color:#297AB1;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
             <span style="font-size:30px;font-weight:700;line-height:1;width:26px">A</span>
             <span style="flex:1;font-size:19px;line-height:1.25;min-height:48px;display:flex;align-items:center;padding-right:6px">Renaturalización <br>del arroyo Layos</span>
-            <svg viewBox="0 0 40 40" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px;flex:none"><circle cx="20" cy="20" r="18"></circle><path d="M13 20h13" stroke-linecap="round"></path><path d="M21 15l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <svg viewBox="0 0 40 40" stroke-width="1.82" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px;flex:none"><circle cx="20" cy="20" r="18" stroke-width="1.36"></circle><path d="M13 20h13" stroke-linecap="round"></path><path d="M21 15l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
           </a>
           <a href="#guardianes" onClick="{{ abrirProyecto }}" style="cursor:pointer;display:flex;align-items:center;gap:20px;border:1.5px solid #5BC2DC;border-radius:12px;padding:20px 22px;color:#5BC2DC;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease,border-color .35s ease" style-hover="background:#F2FAFD;color:#5BC2DC;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
             <span style="font-size:30px;font-weight:700;line-height:1;width:26px">B</span>
             <span style="flex:1;font-size:19px;line-height:1.25;min-height:48px;display:flex;align-items:center;padding-right:6px">Programa de reforestación <br>Bosque Suntory</span>
-            <svg viewBox="0 0 40 40" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px;flex:none"><circle cx="20" cy="20" r="18"></circle><path d="M13 20h13" stroke-linecap="round"></path><path d="M21 15l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <svg viewBox="0 0 40 40" stroke-width="1.82" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px;flex:none"><circle cx="20" cy="20" r="18" stroke-width="1.36"></circle><path d="M13 20h13" stroke-linecap="round"></path><path d="M21 15l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
           </a>
           <a href="#guardianes" onClick="{{ abrirProyecto }}" style="cursor:pointer;display:flex;align-items:center;gap:20px;border:1.5px solid #297AB1;border-radius:12px;padding:20px 22px;color:#297AB1;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease,border-color .35s ease" style-hover="background:#F2FAFD;color:#297AB1;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
             <span style="font-size:30px;font-weight:700;line-height:1;width:26px">C</span>
             <span style="flex:1;font-size:19px;line-height:1.25;min-height:48px;display:flex;align-items:center;padding-right:6px">Proyecto de Eficiencia Hídrica <br>y Agricultura regenerativa</span>
-            <svg viewBox="0 0 40 40" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px;flex:none"><circle cx="20" cy="20" r="18"></circle><path d="M13 20h13" stroke-linecap="round"></path><path d="M21 15l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <svg viewBox="0 0 40 40" stroke-width="1.82" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px;flex:none"><circle cx="20" cy="20" r="18" stroke-width="1.36"></circle><path d="M13 20h13" stroke-linecap="round"></path><path d="M21 15l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
           </a>
           <a href="#guardianes" onClick="{{ abrirProyecto }}" style="cursor:pointer;display:flex;align-items:center;gap:20px;border:1.5px solid #5BC2DC;border-radius:12px;padding:20px 22px;color:#5BC2DC;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease,border-color .35s ease" style-hover="background:#F2FAFD;color:#5BC2DC;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
             <span style="font-size:30px;font-weight:700;line-height:1;width:26px">D</span>
             <span style="flex:1;font-size:19px;line-height:1.25;min-height:48px;display:flex;align-items:center;padding-right:6px">Restauración del río Tajuña: <br>infraestructuras obsoletas</span>
-            <svg viewBox="0 0 40 40" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px;flex:none"><circle cx="20" cy="20" r="18"></circle><path d="M13 20h13" stroke-linecap="round"></path><path d="M21 15l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <svg viewBox="0 0 40 40" stroke-width="1.82" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px;flex:none"><circle cx="20" cy="20" r="18" stroke-width="1.36"></circle><path d="M13 20h13" stroke-linecap="round"></path><path d="M21 15l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
           </a>
           <a href="#guardianes" onClick="{{ abrirProyecto }}" style="cursor:pointer;display:flex;align-items:center;gap:20px;border:1.5px solid #297AB1;border-radius:12px;padding:20px 22px;color:#5BC2DC;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease,border-color .35s ease" style-hover="background:#F2FAFD;color:#5BC2DC;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
             <span style="font-size:30px;font-weight:700;line-height:1;width:26px;color:#297AB1">E</span>
             <span style="flex: 1; font-size: 19px; line-height: 1.25; min-height: 48px; display: flex; align-items: center; padding-right: 6px; color: #297AB1">Territorios esponja: acciones <br>piloto en la Fundación Carral.</span>
-            <svg viewBox="0 0 40 40" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px; flex: none; stroke: #297AB1"><circle cx="20" cy="20" r="18"></circle><path d="M13 20h13" stroke-linecap="round"></path><path d="M21 15l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <svg viewBox="0 0 40 40" stroke-width="1.82" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px; flex: none; stroke: #297AB1"><circle cx="20" cy="20" r="18" stroke-width="1.36"></circle><path d="M13 20h13" stroke-linecap="round"></path><path d="M21 15l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
           </a>
           <a href="#guardianes" onClick="{{ abrirProyecto }}" style="cursor:pointer;display:flex;align-items:center;gap:20px;border:1.5px solid #5BC2DC;border-radius:12px;padding:20px 22px;color:#5BC2DC;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease,border-color .35s ease" style-hover="background:#F2FAFD;color:#5BC2DC;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
             <span style="font-size:30px;font-weight:700;line-height:1;width:26px">F</span>
             <span style="flex:1;font-size:19px;line-height:1.25;min-height:48px;display:flex;align-items:center;padding-right:6px">Inspección de tuberías para <br>la identificación de fugas</span>
-            <svg viewBox="0 0 40 40" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px;flex:none"><circle cx="20" cy="20" r="18"></circle><path d="M13 20h13" stroke-linecap="round"></path><path d="M21 15l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <svg viewBox="0 0 40 40" stroke-width="1.82" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px;flex:none"><circle cx="20" cy="20" r="18" stroke-width="1.36"></circle><path d="M13 20h13" stroke-linecap="round"></path><path d="M21 15l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
           </a>
         </div>
         </div>
         <div style="display:flex;flex-direction:column">
           <h2 data-anim="1" style="font-size:44px;font-weight:700;color:#297AB1">Impacto de los Guardianes</h2>
-          <div data-anim="1" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:22px;margin-top:30px">
-            <div style="background:#fff;border:1.5px solid #5BC2DC;border-radius:12px;padding:26px 22px;text-align:center;display:flex;flex-direction:column;justify-content:flex-start;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22);background:#F2FAFD"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05;color:#297AB1">2.411</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty;color:#5BC2DC">plantas autóctonas introducidas en el arroyo de Layos</p></div>
-            <div style="background:#fff;border:1.5px solid #5BC2DC;border-radius:12px;padding:26px 22px;text-align:center;display:flex;flex-direction:column;justify-content:flex-start;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22);background:#F2FAFD"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05;color:#297AB1">3 ha</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty;color:#5BC2DC">de bosque Suntory reforestado desde comienzo del proyecto</p></div>
-            <div style="background:#fff;border:1.5px solid #5BC2DC;border-radius:12px;padding:26px 22px;text-align:center;display:flex;flex-direction:column;justify-content:flex-start;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22);background:#F2FAFD"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05;color:#297AB1">X</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty;color:#5BC2DC">voluntarios han participado en la reforestación del Bosque Suntory</p></div>
-            <div style="background:#fff;border:1.5px solid #5BC2DC;border-radius:12px;padding:26px 22px;text-align:center;display:flex;flex-direction:column;justify-content:flex-start;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22);background:#F2FAFD"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05;color:#297AB1">100 ha</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty;color:#5BC2DC">de olivar y almendro gestionadas con eficiencia hídrica y agricultura regenerativa en Finca Santa Catalina</p></div>
+          <div data-r="kpiImpacto" data-anim="1" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));align-items:stretch;gap:22px;margin-top:30px">
+            <div style="grid-column:span 2;background:#297AB1;border-radius:12px;padding:26px 22px;text-align:center;display:flex;flex-direction:column;justify-content:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05;color:#fff">2.411</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty;color:#fff">plantas autóctonas introducidas en el arroyo de Layos</p></div>
+            <div style="grid-column:span 2;background:#5BC2DC;border-radius:12px;padding:26px 22px;text-align:center;display:flex;flex-direction:column;justify-content:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05;color:#fff">4,56 ha</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty;color:#fff">de bosque Suntory reforestado desde comienzo del proyecto</p></div>
+            <div style="grid-column:span 2;background:#297AB1;border-radius:12px;padding:26px 22px;text-align:center;display:flex;flex-direction:column;justify-content:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05;color:#fff">+250</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty;color:#fff">participaciones en el voluntariado de reforestación del Bosque Suntory</p></div>
+            <div style="grid-column:span 3;background:#5BC2DC;border-radius:12px;padding:26px 22px;text-align:center;display:flex;flex-direction:column;justify-content:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05;color:#fff">≈118.000 m³</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty;color:#fff">de agua ahorrada por eficiencia hídrica y agricultura regenerativa en Finca Santa Catalina en el año 2025</p></div>
+            <div style="grid-column:span 3;background:#297AB1;border-radius:12px;padding:26px 22px;text-align:center;display:flex;flex-direction:column;justify-content:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05;color:#fff">+600.000 m³</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty;color:#fff">de agua recuperada por el proyecto de retirada de 3 azudes en el río Tajuña</p></div>
           </div>
           <div onMouseEnter="{{ pausarCarrusel }}" onMouseLeave="{{ seguirCarrusel }}" style="display:flex;align-items:center;gap:18px;margin-top:auto;padding-top:34px">
             <button onClick="{{ carAnterior }}" style="flex:none;width:44px;height:44px;border-radius:50%;border:1.5px solid #5BC2DC;background:#fff;color:#5BC2DC;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#5BC2DC;color:#fff;transform:translateY(-4px)">
-              <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px"><path d="M20 12H5"></path><path d="M11 6l-6 6 6 6"></path></svg>
+              <svg viewBox="0 0 24 24" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px"><path d="M20 12H5"></path><path d="M11 6l-6 6 6 6"></path></svg>
             </button>
             <div style="flex:1;min-width:0;border-radius:24px;background:#F2FAFD;padding:14px">
               <div style="overflow:hidden;border-radius:16px">
@@ -306,53 +496,51 @@ input{font-family:inherit}
               </div>
             </div>
             <button onClick="{{ carSiguiente }}" style="flex:none;width:44px;height:44px;border-radius:50%;border:1.5px solid #5BC2DC;background:#fff;color:#5BC2DC;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#5BC2DC;color:#fff;transform:translateY(-4px)">
-              <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px"><path d="M4 12h15"></path><path d="M13 6l6 6-6 6"></path></svg>
+              <svg viewBox="0 0 24 24" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px"><path d="M4 12h15"></path><path d="M13 6l6 6-6 6"></path></svg>
             </button>
           </div>
-          </sc-if>
         </div>
       </div>
     </div>
 
-    <div id="mizuiku" style="position:relative;padding:0 48px">
-      <div style="position:relative;min-height:1080px">
+    <div data-r="secVideo" id="mizuiku" style="position:relative;padding:0 48px">
+      <div data-r="altoVideo" style="position:relative;min-height:1080px">
         <div style="position:absolute;inset:0;border-radius:34px;overflow:hidden;background:#07131c">
   <video ref="{{ refVideo }}" src="assets/video-mizuiku.mp4" poster="assets/poster-mizuiku.png" preload="metadata" data-lazy="1" muted="" loop="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,15,24,.55),rgba(4,15,24,.35) 40%,rgba(4,15,24,.75))"></div>
         </div>
-        <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style="position:absolute;top:-1px;left:-48px;width:calc(100% + 96px);height:96px;display:block">
+        <svg data-r="olaVideo" viewBox="0 0 1440 90" preserveAspectRatio="none" style="position:absolute;top:-1px;left:-48px;width:calc(100% + 96px);height:96px;display:block">
           <path d="M0,0 L1440,0 L1440,58 C1240,80 1030,46 760,26 C470,4 230,96 0,44 Z" fill="#fff"></path>
         </svg>
-        <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style="position:absolute;bottom:-1px;left:-48px;width:calc(100% + 96px);height:96px;display:block">
+        <svg data-r="olaVideo" viewBox="0 0 1440 90" preserveAspectRatio="none" style="position:absolute;bottom:-1px;left:-48px;width:calc(100% + 96px);height:96px;display:block">
           <path d="M0,44 C230,96 470,4 760,26 C1030,46 1240,80 1440,58 L1440,90 L0,90 Z" fill="#fff"></path>
         </svg>
-        <div style="position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:90px;align-items:center;padding:200px 100px 210px">
-          <div data-anim="1" style="padding:44px 46px;border-radius:24px;background:linear-gradient(150deg,rgba(20,74,110,.62),rgba(12,52,80,.72));backdrop-filter:blur(28px) saturate(1.2);-webkit-backdrop-filter:blur(28px) saturate(1.2);border:1px solid rgba(91,194,220,.85);box-shadow:0 24px 60px rgba(4,24,40,.3)">
+        <div data-r="gridVideo" style="position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:90px;align-items:center;padding:200px 100px 210px">
+          <div data-r="vidrio" data-anim="1" style="padding:44px 46px;border-radius:24px;background:linear-gradient(150deg,rgba(20,74,110,.62),rgba(12,52,80,.72));backdrop-filter:blur(28px) saturate(1.2);-webkit-backdrop-filter:blur(28px) saturate(1.2);border:1px solid rgba(91,194,220,.85);box-shadow:0 24px 60px rgba(4,24,40,.3)">
             <h2 style="font-size:44px;font-weight:700;color:#fff">Concienciar para proteger el agua</h2>
             <p style="margin-top:24px;font-size:17px;line-height:1.42;color:#fff">Mizuiku es el programa educativo de Suntory Beverage &amp; Food Iberia que <strong>acerca el valor del agua a las nuevas generaciones.</strong> Su nombre combina las palabras japonesas <strong>mizu (agua)</strong> e <strong>iku (educar),</strong> reflejando su propósito: no solo transmitir conocimiento, sino también <strong>generar una conexión emocional con el agua e inspirar un uso responsable en el día a día.</strong></p>
             <p style="margin-top:22px;font-size:17px;line-height:1.42;color:#fff">Desde su implantación en España en 2022, el programa se ha desarrollado a través de <strong>talleres en centros educativos</strong>, apoyados por materiales pedagógicos que ayudan a comprender el ciclo del agua, su importancia y el impacto de nuestras acciones.</p>
-            <button onClick="{{ abrirVideo }}" style="margin-top: 28px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; background: rgba(255,255,255,.16); border: 1px solid rgba(91,194,220,.85); border-radius: 12px; padding: 20px 22px; cursor: pointer; color: #fff; border-color: #FFFFFF; transition: transform .35s cubic-bezier(.2,.8,.25,1), box-shadow .35s ease, background .35s ease, color .35s ease, border-color .35s ease" style-hover="background:rgba(255,255,255,.3);transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
+            <button data-r="btnFila" onClick="{{ abrirVideoCentros }}" style="margin-top: 28px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; background: rgba(255,255,255,.16); border: 1px solid rgba(91,194,220,.85); border-radius: 12px; padding: 20px 22px; cursor: pointer; color: #fff; border-color: #FFFFFF; transition: transform .35s cubic-bezier(.2,.8,.25,1), box-shadow .35s ease, background .35s ease, color .35s ease, border-color .35s ease" style-hover="background:rgba(255,255,255,.3);transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
               <span style="font-size:19px;font-weight:700;color:#fff">Mizuiku en centros educativos</span>
               <span style="display:flex;align-items:center;gap:14px;font-size:17px;color:#fff">Ver vídeo
-                <svg viewBox="0 0 40 40" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px"><circle cx="20" cy="20" r="18"></circle><path d="M13 20h13" stroke-linecap="round"></path><path d="M21 15l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <svg viewBox="0 0 40 40" stroke-width="1.82" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px"><circle cx="20" cy="20" r="18" stroke-width="1.36"></circle><path d="M13 20h13" stroke-linecap="round"></path><path d="M21 15l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
               </span>
             </button>
             <p style="margin-top:34px;font-size:17px;line-height:1.42;color:#fff">En 2025, Mizuiku evoluciona para ampliar su alcance con el <strong>lanzamiento de la obra teatral “El Viaje del Agua”,</strong> una propuesta que utiliza el arte y la cultura para emocionar, generar reflexión y reforzar la conexión con el valor del agua.</p>
-            <button onClick="{{ abrirVideo }}" style="margin-top:28px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;background:rgba(255,255,255,.12);border:1px solid rgba(91,194,220,.55);border-radius:12px;padding:20px 22px;cursor:pointer;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:rgba(255,255,255,.3);transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
+            <button data-r="btnFila" onClick="{{ abrirVideoTeatro }}" style="margin-top:28px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;background:rgba(255,255,255,.12);border:1px solid rgba(91,194,220,.55);border-radius:12px;padding:20px 22px;cursor:pointer;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:rgba(255,255,255,.3);transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
               <span style="font-size:19px;font-weight:700;color:#5BC2DC">Nuevo Mizuiku en teatros</span>
               <span style="display: flex; align-items: center; gap: 14px; font-size: 17px; color: #5BC2DC">Ver vídeo
-                <svg viewBox="0 0 40 40" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px"><circle cx="20" cy="20" r="18"></circle><path d="M13 20h13" stroke-linecap="round"></path><path d="M21 15l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <svg viewBox="0 0 40 40" stroke-width="1.82" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:44px;height:44px"><circle cx="20" cy="20" r="18" stroke-width="1.36"></circle><path d="M13 20h13" stroke-linecap="round"></path><path d="M21 15l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
               </span>
             </button>
           </div>
           <div>
             <img src="assets/logo-mizuiku-blanco.png" alt="Mizuiku" style="width:70%;max-width:520px;display:block;margin:0 auto 46px">
             <div data-anim="1" style="display:flex;flex-wrap:wrap;justify-content:center;gap:22px">
-              <div style="width:calc(33.333% - 15px);background:linear-gradient(150deg,rgba(20,74,110,.6),rgba(12,52,80,.7));backdrop-filter:blur(24px) saturate(1.2);-webkit-backdrop-filter:blur(24px) saturate(1.2);border:1.5px solid rgba(91,194,220,.85);border-radius:12px;padding:26px 22px;text-align:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05">11.070</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty">participantes alcanzados en total</p></div>
-              <div style="width:calc(33.333% - 15px);background:linear-gradient(150deg,rgba(20,74,110,.6),rgba(12,52,80,.7));backdrop-filter:blur(24px) saturate(1.2);-webkit-backdrop-filter:blur(24px) saturate(1.2);border:1.5px solid rgba(91,194,220,.85);border-radius:12px;padding:26px 22px;text-align:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05">6.570</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty">estudiantes en “El Viaje del Agua” 2025</p></div>
-              <div style="width:calc(33.333% - 15px);background:linear-gradient(150deg,rgba(20,74,110,.6),rgba(12,52,80,.7));backdrop-filter:blur(24px) saturate(1.2);-webkit-backdrop-filter:blur(24px) saturate(1.2);border:1.5px solid rgba(91,194,220,.85);border-radius:12px;padding:26px 22px;text-align:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05">55</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty">centros educativos participantes en 2025</p></div>
-              <div style="width:calc(33.333% - 15px);background:linear-gradient(150deg,rgba(20,74,110,.6),rgba(12,52,80,.7));backdrop-filter:blur(24px) saturate(1.2);-webkit-backdrop-filter:blur(24px) saturate(1.2);border:1.5px solid rgba(91,194,220,.85);border-radius:12px;padding:26px 22px;text-align:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05">90%</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty">de participantes en 2025 que repetirían</p></div>
-              <div style="width:calc(33.333% - 15px);background:linear-gradient(150deg,rgba(20,74,110,.6),rgba(12,52,80,.7));backdrop-filter:blur(24px) saturate(1.2);-webkit-backdrop-filter:blur(24px) saturate(1.2);border:1.5px solid rgba(91,194,220,.85);border-radius:12px;padding:26px 22px;text-align:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05">8.000</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty">nuevos participantes estimados en 2026</p></div>
+              <div style="width:calc(50% - 11px);background:linear-gradient(150deg,rgba(20,74,110,.6),rgba(12,52,80,.7));backdrop-filter:blur(24px) saturate(1.2);-webkit-backdrop-filter:blur(24px) saturate(1.2);border:1.5px solid rgba(91,194,220,.85);border-radius:12px;padding:26px 22px;text-align:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05">+20.000</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty">estudiantes alcanzados en total</p></div>
+              <div style="width:calc(50% - 11px);background:linear-gradient(150deg,rgba(20,74,110,.6),rgba(12,52,80,.7));backdrop-filter:blur(24px) saturate(1.2);-webkit-backdrop-filter:blur(24px) saturate(1.2);border:1.5px solid rgba(91,194,220,.85);border-radius:12px;padding:26px 22px;text-align:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05">9.500</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty">estudiantes vieron “El Viaje del Agua” en 2026</p></div>
+              <div style="width:calc(50% - 11px);background:linear-gradient(150deg,rgba(20,74,110,.6),rgba(12,52,80,.7));backdrop-filter:blur(24px) saturate(1.2);-webkit-backdrop-filter:blur(24px) saturate(1.2);border:1.5px solid rgba(91,194,220,.85);border-radius:12px;padding:26px 22px;text-align:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05">55</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty">centros educativos participantes en 2025</p></div>
+              <div style="width:calc(50% - 11px);background:linear-gradient(150deg,rgba(20,74,110,.6),rgba(12,52,80,.7));backdrop-filter:blur(24px) saturate(1.2);-webkit-backdrop-filter:blur(24px) saturate(1.2);border:1.5px solid rgba(91,194,220,.85);border-radius:12px;padding:26px 22px;text-align:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)"><p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05">90%</p><p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty">de los docentes encuestados en 2025 repetirían</p></div>
             </div>
           </div>
         </div>
@@ -363,48 +551,51 @@ input{font-family:inherit}
   </sc-if>
 
   <sc-if value="{{ esActividades }}" hint-placeholder-val="{{ false }}">
-  <div id="actividades" style="background:#297AB1;padding:130px 100px 0">
-    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:start">
-      <h1 style="font-size:58px;font-weight:700;color:#fff;line-height:1.1">Descubre actividades</h1>
-      <p style="font-size:17px;line-height:1.42;color:#fff;padding-top:10px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut hendrerit erat, id euismod ex. Duis blandit odio et metus rhoncus, ac venenatis odio fermentum. Pellentesque id felis risus. Aenean pharetra auctor nulla, sed gravida odio laoreet blandit. Suspendisse potenti.</p>
+  <div data-r="pagina" id="actividades" style="background:#297AB1;padding:130px 100px 0">
+    <div data-r="g2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:start">
+      <h1 style="font-size:58px;font-weight:700;color:#fff;line-height:1.1">Otras iniciativas</h1>
+      <p style="font-size:17px;line-height:1.42;color:#fff;padding-top:10px">En este apartado se recogen otras iniciativas vinculadas al cuidado y la gestión sostenible del agua, como los voluntariados, las jornadas divulgativas, las representaciones del programa Mizuiku o los comunicados dirigidos a nuestros grupos de interés. Son acciones que buscan acercar el cuidado del agua a las personas y mantener informado a nuestro entorno sobre los avances hacia nuestra ambición Water Positive.</p>
     </div>
-    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;padding:80px 0 0">
-      <sc-for list="{{ actividades }}" as="a" hint-placeholder-count="4">
-        <div style="background:#fff;border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:20px;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
-          <img src="assets/aerea-plantacion.png" alt="" style="width:100%;height:270px;object-fit:cover;border-radius:12px;display:block">
-          <h3 style="font-size:27px;font-weight:700;color:#297AB1;line-height:1.25">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-          <p style="font-size:16px;line-height:1.42;color:#5BC2DC">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut hendrerit erat, id euismod ex. Duis blandit odio et metus rhoncus...</p>
-          <a href="#actividades" style="align-self:center;background:#297AB1;color:#fff;border-radius:999px;padding:13px 26px;font-size:17px;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#1F6390;color:#fff;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">Descubre más</a>
+    <div style="display:flex;flex-direction:column;gap:32px;padding:80px 0 0">
+      <div data-r="tarjetaH" style="background:#fff;border-radius:24px;padding:26px;display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,1fr);gap:40px;align-items:center;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
+        <img src="assets/iniciativa-aws.jpg" alt="Presentación a las partes interesadas en un auditorio" style="width:100%;height:270px;object-fit:cover;border-radius:12px;display:block">
+        <div style="padding-right:20px">
+          <span style="display:inline-block;border:1.5px solid #297AB1;color:#297AB1;border-radius:999px;padding:5px 13px;font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase">Comunicado</span>
+          <h3 style="margin-top:16px;font-size:27px;font-weight:700;color:#297AB1;line-height:1.28">Comunicado a las partes interesadas: certificación AWS</h3>
+          <p style="margin-top:16px;font-size:17px;line-height:1.42;color:#297AB1;max-width:900px">Nuestra fábrica de Toledo ha iniciado el proceso de certificación de la Alliance for Water Stewardship (AWS), la norma internacional de gestión responsable del agua. Las partes interesadas pueden enviar sus comentarios a través de este comunicado.</p>
+          <a href="docs/aws-comunicado-partes-interesadas.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;margin-top:22px;background:#297AB1;color:#fff;border-radius:999px;padding:13px 26px;font-size:16px;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease" style-hover="background:#1F6390;color:#fff;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">Ver comunicado
+            <svg viewBox="0 0 24 24" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 12l5 5 5-5"></path><path d="M5 20h14"></path></svg>
+          </a>
         </div>
-      </sc-for>
+      </div>
     </div>
-    <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style="display:block;width:calc(100% + 200px);height:96px;margin:100px -100px -1px">
+    <svg data-r="olaPie" viewBox="0 0 1440 90" preserveAspectRatio="none" style="display:block;width:calc(100% + 200px);height:96px;margin:100px -100px -1px">
       <path d="M0,46 C230,96 470,4 760,26 C1030,46 1240,80 1440,58 L1440,90 L0,90 Z" fill="#fff"></path>
     </svg>
   </div>
   </sc-if>
 
   <sc-if value="{{ esDocs }}" hint-placeholder-val="{{ false }}">
-  <div id="docs" style="background:#297AB1;padding:130px 100px 0">
-    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:start">
+  <div data-r="pagina" id="docs" style="background:#297AB1;padding:130px 100px 0">
+    <div data-r="g2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:start">
     <div>
       <h1 style="font-size:58px;font-weight:700;color:#fff;line-height:1.1">Documentos de interés</h1>
-      <p style="margin-top:22px;font-size:17px;line-height:1.42;color:#fff;max-width:760px;text-wrap:pretty">Los estudios, informes de seguimiento y artículos científicos que sustentan nuestros proyectos. Trabajos elaborados junto a la Universidad de Alcalá y a los equipos técnicos de Guardianes del Tajo, con los datos hidrológicos y de calidad del agua sobre los que decidimos cada actuación.</p>
+      <p style="margin-top:22px;font-size:17px;line-height:1.42;color:#fff;max-width:760px;text-wrap:pretty">En este apartado se recogen los estudios, informes y publicaciones científicas de nuestros proyectos, desde los análisis que nos ayudan a conocer el estado del agua y la biodiversidad de la cuenca hasta los informes de obra, seguimiento y resultados de cada actuación. Son trabajos elaborados junto a universidades, consultoras y entidades especializadas que colaboran con nosotros en Guardianes del Tajo.</p>
     </div>
     <div data-menu-doc="1" style="padding-top:14px;position:relative;z-index:20">
       <label style="display:flex;align-items:center;gap:14px;background:#fff;border-radius:12px;padding:18px 22px">
         <input value="{{ busqueda }}" onChange="{{ setBusqueda }}" placeholder="Escribe aquí tu búsqueda..." style="flex:1;border:0;outline:none;font-size:17px;color:#297AB1;background:transparent">
-        <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#297AB1" style="width:22px;height:22px"><circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5L21 21"></path></svg>
+        <svg viewBox="0 0 24 24" stroke-width="2.18" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#297AB1" style="width:22px;height:22px"><circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5L21 21"></path></svg>
       </label>
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:22px">
         <sc-for list="{{ menusFiltro }}" as="m" hint-placeholder-count="3">
-          <div style="position:relative">
+          <div data-r="filtroItem" style="position:relative">
             <button onClick="{{ m.toggle }}" style="display:flex;align-items:center;gap:14px;max-width:320px;background:#fff;border:0;border-radius:999px;padding:11px 22px;font-size:16px;color:#297AB1;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#EAF6FA;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
               <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ m.etiqueta }}</span>
-              <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px;flex:none"><path d="M6 9l6 6 6-6"></path></svg>
+              <svg viewBox="0 0 24 24" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px;flex:none"><path d="M6 9l6 6 6-6"></path></svg>
             </button>
             <sc-if value="{{ m.abierto }}" hint-placeholder-val="{{ false }}">
-              <div style="position:absolute;top:calc(100% + 12px);left:0;min-width:280px;background:#fff;border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:2px;box-shadow:0 20px 50px rgba(4,24,40,.28);z-index:30">
+              <div data-r="desplegable" style="position:absolute;top:calc(100% + 12px);left:0;min-width:280px;background:#fff;border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:2px;box-shadow:0 20px 50px rgba(4,24,40,.28);z-index:30">
                 <sc-for list="{{ m.opciones }}" as="o" hint-placeholder-count="4">
                   <button onClick="{{ o.elegir }}" style="{{ o.estilo }}" style-hover="background:#EAF6FA">{{ o.texto }}</button>
                 </sc-for>
@@ -414,13 +605,13 @@ input{font-family:inherit}
         </sc-for>
         <div style="width:1.5px;height:26px;background:rgba(255,255,255,.35)"></div>
         <sc-for list="{{ menusOrden }}" as="m" hint-placeholder-count="1">
-          <div style="position:relative">
+          <div data-r="filtroItem" style="position:relative">
             <button onClick="{{ m.toggle }}" style="display:flex;align-items:center;gap:14px;max-width:320px;background:#fff;border:0;border-radius:999px;padding:11px 22px;font-size:16px;color:#297AB1;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#EAF6FA;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
               <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ m.etiqueta }}</span>
-              <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px;flex:none"><path d="M6 9l6 6 6-6"></path></svg>
+              <svg viewBox="0 0 24 24" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px;flex:none"><path d="M6 9l6 6 6-6"></path></svg>
             </button>
             <sc-if value="{{ m.abierto }}" hint-placeholder-val="{{ false }}">
-              <div style="position:absolute;top:calc(100% + 12px);left:0;min-width:280px;background:#fff;border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:2px;box-shadow:0 20px 50px rgba(4,24,40,.28);z-index:30">
+              <div data-r="desplegable" style="position:absolute;top:calc(100% + 12px);left:0;min-width:280px;background:#fff;border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:2px;box-shadow:0 20px 50px rgba(4,24,40,.28);z-index:30">
                 <sc-for list="{{ m.opciones }}" as="o" hint-placeholder-count="4">
                   <button onClick="{{ o.elegir }}" style="{{ o.estilo }}" style-hover="background:#EAF6FA">{{ o.texto }}</button>
                 </sc-for>
@@ -433,30 +624,40 @@ input{font-family:inherit}
         <span style="font-size:15px;color:rgba(255,255,255,.8)">{{ textoResultados }}</span>
         <sc-if value="{{ hayFiltros }}" hint-placeholder-val="{{ false }}">
           <button onClick="{{ limpiarFiltros }}" style="display:flex;align-items:center;gap:10px;background:transparent;border:0;padding:0;font-size:15px;color:#fff;text-decoration:underline;cursor:pointer;transition:color .35s ease" style-hover="color:#EAF6FA">Quitar filtros
-            <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:14px;height:14px"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
+            <svg viewBox="0 0 24 24" stroke-width="3.43" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:14px;height:14px"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
           </button>
         </sc-if>
       </div>
     </div>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:34px;padding:80px 0 0">
+    <div data-r="gridDocs" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:34px;padding:80px 0 0">
       <sc-for list="{{ documentos }}" as="d" hint-placeholder-count="5">
         <div style="background:#fff;border-radius:24px;padding:26px;display:flex;flex-direction:column;gap:14px;min-height:300px;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px">
-            <svg viewBox="0 0 48 58" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#297AB1" style="width:46px;height:56px;flex:none"><path d="M4 3h26l14 14v38H4z"></path><path d="M30 3v14h14"></path></svg>
-            <span style="background:transparent;color:#5BC2DC;border:1.5px solid #5BC2DC;border-radius:999px;padding:5px 13px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;line-height:1.15;text-align:right;margin-top:4px">{{ d.tipo }}</span>
+            <svg viewBox="0 0 48 58" stroke-width="2.09" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#297AB1" style="width:46px;height:56px;flex:none"><path d="M4 3h26l14 14v38H4z"></path><path d="M30 3v14h14"></path></svg>
+            <span style="background:transparent;color:#5BC2DC;border:1.5px solid #5BC2DC;border-radius:999px;padding:5px 13px;font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;line-height:1.15;text-align:center;margin-top:4px;max-width:170px">{{ d.tipo }}</span>
           </div>
-          <a href="{{ d.archivo }}" target="_blank" rel="noopener" style="text-decoration:none;color:#297AB1;transition:color .35s ease" style-hover="color:#5BC2DC">
-            <h3 style="font-size:23px;font-weight:700;color:inherit;line-height:1.24;text-wrap:pretty">{{ d.titulo }}</h3>
-          </a>
+          <sc-if value="{{ d.disponible }}" hint-placeholder-val="{{ true }}">
+            <a href="{{ d.archivo }}" target="_blank" rel="noopener" style="text-decoration:none;color:#297AB1;transition:color .35s ease" style-hover="color:#5BC2DC">
+              <h3 style="font-size:23px;font-weight:700;color:inherit;line-height:1.24;text-wrap:pretty">{{ d.titulo }}</h3>
+            </a>
+          </sc-if>
+          <sc-if value="{{ d.pendiente }}" hint-placeholder-val="{{ false }}">
+            <h3 style="font-size:23px;font-weight:700;color:#297AB1;line-height:1.24;text-wrap:pretty">{{ d.titulo }}</h3>
+          </sc-if>
           <p style="font-size:14px;line-height:1.4;color:#5BC2DC;flex:1;text-wrap:pretty">{{ d.resumen }}</p>
           <div style="display:flex;align-items:center;justify-content:space-between;gap:14px">
-            <a href="{{ d.archivo }}" target="_blank" rel="noopener" download="{{ true }}" style="display:flex;align-items:center;gap:12px;background:#297AB1;color:#fff;border-radius:999px;padding:11px 22px;font-size:15px;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#1F6390;color:#fff;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">Descargar
-            <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px"><path d="M12 4v11"></path><path d="M7 12l5 5 5-5"></path><path d="M5 20h14"></path></svg>
-            </a>
+            <sc-if value="{{ d.disponible }}" hint-placeholder-val="{{ true }}">
+              <a href="{{ d.archivo }}" target="_blank" rel="noopener" download="{{ true }}" style="display:flex;align-items:center;gap:12px;background:#297AB1;color:#fff;border-radius:999px;padding:11px 22px;font-size:15px;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#1F6390;color:#fff;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">Descargar
+              <svg viewBox="0 0 24 24" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 12l5 5 5-5"></path><path d="M5 20h14"></path></svg>
+              </a>
+            </sc-if>
+            <sc-if value="{{ d.pendiente }}" hint-placeholder-val="{{ false }}">
+              <span style="display:flex;align-items:center;gap:10px;background:#EAF6FA;color:#297AB1;border:1.5px dashed #297AB1;border-radius:999px;padding:10px 20px;font-size:15px">Próximamente</span>
+            </sc-if>
             <span style="flex:none;display:flex;align-items:stretch;border:1.5px solid #5BC2DC;border-radius:10px;overflow:hidden">
-              <span style="display:flex;align-items:center;padding:5px 10px;font-size:13px;font-weight:700;letter-spacing:.06em;color:#297AB1">{{ d.anio }}</span>
+              <span style="display:flex;align-items:center;padding:5px 10px;font-size:14px;font-weight:700;letter-spacing:.06em;color:#297AB1">{{ d.anio }}</span>
               <span style="display:flex;align-items:center;padding:5px 9px;border-left:1.5px solid #5BC2DC;background:#EAF6FA">
                 <sc-if value="{{ d.esES }}" hint-placeholder-val="{{ true }}">
                   <svg viewBox="0 0 60 40" style="width:24px;height:16px;border-radius:2px;display:block"><rect width="60" height="40" fill="#C60B1E"></rect><rect y="10" width="60" height="20" fill="#FFC400"></rect></svg>
@@ -476,53 +677,78 @@ input{font-family:inherit}
         <button onClick="{{ limpiarFiltros }}" style="display:flex;align-items:center;gap:12px;background:#fff;border:0;border-radius:999px;padding:11px 22px;font-size:16px;font-weight:700;color:#297AB1;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#EAF6FA;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">Quitar todos los filtros</button>
       </div>
     </sc-if>
-    <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style="display:block;width:calc(100% + 200px);height:96px;margin:100px -100px -1px">
+
+    <div data-r="enlaces" id="enlaces" style="margin-top:120px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:80px;align-items:start">
+      <div>
+        <h2 style="font-size:44px;font-weight:700;color:#fff;line-height:1.15">Enlaces de interés</h2>
+        <p style="margin-top:22px;font-size:17px;line-height:1.42;color:#fff;max-width:560px;text-wrap:pretty">Más información sobre nuestra ambición Water Positive y sobre los proyectos de Guardianes del Tajo en las webs de Suntory y de las entidades que colaboran con nosotros.</p>
+      </div>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px">
+        <sc-for list="{{ enlaces }}" as="l" hint-placeholder-count="7">
+          <li>
+            <a href="{{ l.url }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:24px;background:#fff;border-radius:12px;padding:18px 22px;color:#297AB1;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease" style-hover="background:#EAF6FA;color:#297AB1;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
+              <span style="display:flex;flex-direction:column;gap:4px;min-width:0">
+                <span style="font-size:18px;font-weight:700;line-height:1.3;text-wrap:pretty">{{ l.texto }}</span>
+                <span style="font-size:14px;color:#297AB1;opacity:.8">{{ l.fuente }}</span>
+              </span>
+              <svg viewBox="0 0 24 24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:20px;height:20px;flex:none" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M9 7h8v8"></path></svg>
+            </a>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+    <svg data-r="olaPie" viewBox="0 0 1440 90" preserveAspectRatio="none" style="display:block;width:calc(100% + 200px);height:96px;margin:100px -100px -1px">
       <path d="M0,46 C230,96 470,4 760,26 C1030,46 1240,80 1440,58 L1440,90 L0,90 Z" fill="#fff"></path>
     </svg>
   </div>
   </sc-if>
 
   <sc-if value="{{ esNoticias }}" hint-placeholder-val="{{ false }}">
-  <div id="noticias" style="background:#297AB1;padding:130px 100px 0">
-    <h1 style="font-size:58px;font-weight:700;color:#fff;line-height:1.1">Noticias</h1>
+  <div data-r="pagina" id="noticias" style="background:#297AB1;padding:130px 100px 0">
+    <div data-r="g2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:start">
+      <h1 style="font-size:58px;font-weight:700;color:#fff;line-height:1.1">Noticias</h1>
+      <p style="font-size:17px;line-height:1.42;color:#fff;padding-top:10px">Actualidad sobre nuestra ambición Water Positive, los proyectos de Guardianes del Tajo y el programa Mizuiku, en la web de Suntory Beverage &amp; Food Iberia y en los medios.</p>
+    </div>
     <div style="display:flex;flex-direction:column;gap:32px;padding:80px 0 0">
       <sc-for list="{{ noticias }}" as="n" hint-placeholder-count="4">
-        <div style="background:#fff;border-radius:24px;padding:26px;display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,1fr);gap:40px;align-items:center;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
-          <img src="assets/noticia-aerea.png" alt="" style="width:100%;height:250px;object-fit:cover;border-radius:12px;display:block">
+        <div data-r="tarjetaH" style="background:#fff;border-radius:24px;padding:26px;display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,1fr);gap:40px;align-items:center;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
+          {{ n.imgEl }}
           <div style="padding-right:20px">
-            <h3 style="font-size:27px;font-weight:700;color:#297AB1;line-height:1.28">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut hendrerit erat, id euismod ex. Duis blandit odio et.</h3>
-            <p style="margin-top:18px;font-size:16px;line-height:1.42;color:#5BC2DC">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut hendrerit erat, id euismod ex. Duis blandit odio et metus rhoncus, ac venenatis odio fermentum. Pellentesque id felis risus...</p>
-            <a href="#noticias" style="display:inline-flex;margin-top:22px;background:#297AB1;color:#fff;border-radius:999px;padding:13px 26px;font-size:16px;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#1F6390;color:#fff;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">Leer más</a>
+            <span style="display:inline-block;border:1.5px solid #297AB1;color:#297AB1;border-radius:999px;padding:5px 13px;font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase">{{ n.fuente }}</span>
+            <h3 style="margin-top:16px;font-size:27px;font-weight:700;color:#297AB1;line-height:1.28;text-wrap:pretty">{{ n.titulo }}</h3>
+            <a href="{{ n.url }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;margin-top:22px;background:#297AB1;color:#fff;border-radius:999px;padding:13px 26px;font-size:16px;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease" style-hover="background:#1F6390;color:#fff;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">Leer noticia
+              <svg viewBox="0 0 24 24" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M9 7h8v8"></path></svg>
+            </a>
           </div>
         </div>
       </sc-for>
     </div>
-    <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style="display:block;width:calc(100% + 200px);height:96px;margin:100px -100px -1px">
+    <svg data-r="olaPie" viewBox="0 0 1440 90" preserveAspectRatio="none" style="display:block;width:calc(100% + 200px);height:96px;margin:100px -100px -1px">
       <path d="M0,46 C230,96 470,4 760,26 C1030,46 1240,80 1440,58 L1440,90 L0,90 Z" fill="#fff"></path>
     </svg>
   </div>
   </sc-if>
 
-  <div ref="{{ refClaro }}" style="background:#fff;padding:46px 100px 40px">
-    <div style="display:flex;align-items:stretch;gap:70px">
+  <div data-r="pie" ref="{{ refClaro }}" style="background:#fff;padding:46px 100px 40px">
+    <div data-r="pieFila" style="display:flex;align-items:stretch;gap:70px">
       <div style="flex:1;min-width:0;display:flex;flex-direction:column">
-        <div style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.62fr) minmax(0,.62fr);gap:40px;align-items:start">
-          <h2 data-anim="1" style="font-size:38px;font-weight:700;color:#297AB1;line-height:1.3;max-width:560px">Proteger el agua es proteger a las <span style="color:#5BC2DC">personas</span> y a las <span style="color:#5BC2DC">próximas generaciones.</span></h2>
-          <div style="display:flex;flex-direction:column;gap:18px;padding-top:6px">
-            <a href="#docs" onClick="{{ irDocs }}" style="font-size:18px;color:#297AB1" style-hover="color:#5BC2DC">Documentos de Interés</a>
-            <a href="#docs" onClick="{{ irDocs }}" style="font-size:18px;color:#5BC2DC" style-hover="color:#297AB1">Estudios</a>
-            <a href="#docs" onClick="{{ irDocs }}" style="font-size:18px;color:#5BC2DC" style-hover="color:#297AB1">Otros</a>
-            <a href="#docs" onClick="{{ irDocs }}" style="font-size:18px;color:#5BC2DC" style-hover="color:#297AB1">Enlaces</a>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:18px;padding-top:6px">
+        <div data-r="pieGrid" style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.62fr) minmax(0,.62fr);gap:40px;align-items:start">
+          <h2 data-anim="1" style="font-size:38px;font-weight:700;color:#297AB1;line-height:1.3;max-width:560px">Proteger el agua es proteger <span style="color:#5BC2DC">nuestros recursos</span> y a las <span style="color:#5BC2DC">generaciones futuras.</span></h2>
+          <nav aria-label="Documentación" style="display:flex;flex-direction:column;gap:18px;padding-top:6px">
+            <a href="#docs" onClick="{{ irDocs }}" style="font-size:18px;color:#297AB1" style-hover="color:#5BC2DC">Documentos de interés</a>
+            <a href="#docs" onClick="{{ irEstudios }}" style="font-size:18px;color:#5BC2DC" style-hover="color:#297AB1">Estudios técnicos</a>
+            <a href="#docs" onClick="{{ irPublicaciones }}" style="font-size:18px;color:#5BC2DC" style-hover="color:#297AB1">Publicaciones científicas</a>
+            <a href="#enlaces" onClick="{{ irEnlaces }}" style="font-size:18px;color:#5BC2DC" style-hover="color:#297AB1">Enlaces de interés</a>
+          </nav>
+          <nav aria-label="Conoce más" style="display:flex;flex-direction:column;gap:18px;padding-top:6px">
             <span style="font-size:18px;color:#297AB1">Conoce más</span>
-            <a href="#noticias" onClick="{{ irNoticias }}" style="font-size:18px;color:#297AB1" style-hover="color:#5BC2DC">Noticias</a>
-            <a href="#actividades" onClick="{{ irActividades }}" style="font-size:18px;color:#297AB1" style-hover="color:#5BC2DC">Actividades</a>
-          </div>
+            <a href="#noticias" onClick="{{ irNoticias }}" style="font-size:18px;color:#5BC2DC" style-hover="color:#297AB1">Noticias</a>
+            <a href="#actividades" onClick="{{ irActividades }}" style="font-size:18px;color:#5BC2DC" style-hover="color:#297AB1">Otras iniciativas</a>
+          </nav>
         </div>
         <p style="margin-top:auto;padding-top:46px;font-size:15px;color:#297AB1">© 2026 Water Positive 2030 · Suntory Beverage &amp; Food Iberia. Todos los derechos reservados.</p>
       </div>
-      <img src="assets/logo-wp.svg" alt="Water Positive 2030" style="flex:none;width:320px;align-self:stretch;height:auto;object-fit:contain;display:block">
+      <img data-r="pieLogo" src="assets/logo-wp.svg" alt="Water Positive 2030" style="flex:none;width:320px;align-self:stretch;height:auto;object-fit:contain;display:block">
     </div>
   </div>
 
@@ -537,64 +763,120 @@ input{font-family:inherit}
   </div>
 
   <sc-if value="{{ proyectoAbierto }}" hint-placeholder-val="{{ false }}">
-    <div onClick="{{ cerrarProyecto }}" style="position:fixed;inset:0;z-index:90;background:rgba(6,26,42,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:70px">
-      <div ref="{{ refFicha }}" data-scroll-propio="1" onClick="{{ pararClick }}" style="position:relative;width:100%;max-width:1560px;max-height:960px;overflow:auto;background:#fff;border-radius:24px;padding:52px 60px 40px;display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:56px;box-shadow:0 40px 100px rgba(4,24,40,.45)">
-        <button onClick="{{ cerrarProyecto }}" aria-label="Cerrar" style="position:absolute;top:26px;left:26px;z-index:2;width:44px;height:44px;border-radius:50%;border:1.5px solid #297AB1;background:#fff;color:#297AB1;display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:inherit;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#297AB1;color:#fff;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
-          <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
+    <div data-r="modalFondo" data-velo="1" data-saliendo="{{ salProyecto }}" onClick="{{ cerrarProyecto }}" style="position:fixed;inset:0;z-index:90;background:rgba(6,26,42,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:70px">
+      <div data-r="fichaMarco" data-panel="1" onClick="{{ pararClick }}" style="position:relative;width:100%;max-width:1560px">
+        <button onClick="{{ cerrarProyecto }}" aria-label="Cerrar" style="position:absolute;top:18px;right:18px;z-index:3;width:44px;height:44px;border-radius:50%;border:1.5px solid #297AB1;background:#fff;color:#297AB1;display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:inherit;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#297AB1;color:#fff;transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
+          <svg viewBox="0 0 24 24" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
         </button>
-        <div style="display:flex;align-items:center;justify-content:center">
-          {{ proyLogoImg }}
+      <div data-r="ficha" ref="{{ refFicha }}" data-scroll-propio="1" style="position:relative;width:100%;max-height:960px;overflow:auto;background:#fff;border-radius:24px;padding:52px 60px 48px;display:grid;grid-template-columns:{{ proyRejilla }};align-items:stretch;gap:56px;box-shadow:0 40px 100px rgba(4,24,40,.45)">
+        <div data-r="fichaIzq" style="display:flex;flex-direction:column;align-self:stretch">
+          <sc-if value="{{ proyTieneComparativa }}" hint-placeholder-val="{{ false }}">
+            <figure data-r="compFigura" style="margin:0;flex:1;display:flex;flex-direction:column;gap:12px">
+              <div data-r="comp" style="position:relative;border-radius:16px;overflow:hidden;aspect-ratio:{{ compAspecto }};background:#EAF6FA;user-select:none;-webkit-user-select:none;touch-action:pan-y">
+                {{ compImgDespues }}
+                {{ compImgAntes }}
+                <span data-r="compEtq" aria-hidden="true" style="position:absolute;top:16px;left:16px;background:rgba(6,26,42,.62);color:#fff;border-radius:999px;padding:6px 14px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;pointer-events:none">{{ compEtqAntes }}</span>
+                <span data-r="compEtq" aria-hidden="true" style="position:absolute;top:16px;right:16px;background:rgba(6,26,42,.62);color:#fff;border-radius:999px;padding:6px 14px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;pointer-events:none">{{ compEtqDespues }}</span>
+                <span aria-hidden="true" style="position:absolute;top:0;bottom:0;left:{{ compPos }}%;width:3px;background:#fff;transform:translateX(-50%);box-shadow:0 0 12px rgba(4,24,40,.45);pointer-events:none"></span>
+                <input data-r="compRango" type="range" min="0" max="100" step="0.5" value="{{ compPos }}" onChange="{{ setComp }}" aria-label="{{ compAria }}" aria-valuetext="{{ compTexto }}" style="position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none;background:transparent">
+                <span data-r="compLogo" style="position:absolute;left:16px;bottom:16px;z-index:2;background:#fff;border-radius:12px;padding:10px 14px;display:flex;align-items:center;box-shadow:0 10px 24px rgba(4,24,40,.25);pointer-events:none">
+                  {{ logoChipImg }}
+                </span>
+                <span data-r="compMando" aria-hidden="true" style="position:absolute;top:50%;left:{{ compPos }}%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:#fff;color:#297AB1;display:flex;align-items:center;justify-content:center;gap:2px;box-shadow:0 10px 26px rgba(4,24,40,.35);pointer-events:none">
+                  <svg viewBox="0 0 24 24" stroke-width="3.43" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:14px;height:14px"><path d="M15 6l-6 6 6 6"></path></svg>
+                  <svg viewBox="0 0 24 24" stroke-width="3.43" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:14px;height:14px"><path d="M9 6l6 6-6 6"></path></svg>
+                </span>
+              </div>
+              <figcaption style="font-size:14px;line-height:1.4;color:#297AB1">{{ compPie }}</figcaption>
+            </figure>
+          </sc-if>
+          <sc-if value="{{ proyTienePortada }}" hint-placeholder-val="{{ true }}">
+            <div data-r="fichaPortada" style="position:relative;width:100%;flex:1;min-height:360px;border-radius:16px;overflow:hidden;background:#EAF6FA">
+              {{ portadaImg }}
+              <span style="position:absolute;left:16px;bottom:16px;background:#fff;border-radius:12px;padding:10px 14px;display:flex;align-items:center;box-shadow:0 10px 24px rgba(4,24,40,.25)">
+                {{ logoChipImg }}
+              </span>
+            </div>
+          </sc-if>
+          <sc-if value="{{ proySinPortada }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:center;justify-content:center;padding:30px 20px">
+              {{ logoGrandeImg }}
+            </div>
+          </sc-if>
         </div>
-        <div style="display:flex;flex-direction:column;justify-content:center;gap:26px;padding-right:40px">
+        <div data-r="fichaCuerpo" style="display:flex;flex-direction:column;gap:30px;padding-right:20px">
           <div>
-            <h2 style="font-size:38px;font-weight:700;color:#297AB1;line-height:1.16">{{ proyTitulo }}</h2>
-            <p style="margin-top:20px;font-size:17px;line-height:1.47;color:#297AB1">{{ proyDescripcion }}</p>
-            <sc-if value="{{ proyTieneDos }}" hint-placeholder-val="{{ false }}">
-              <p style="margin-top:16px;font-size:17px;line-height:1.47;color:#297AB1">{{ proyDescripcion2 }}</p>
-            </sc-if>
+            <h2 style="font-size:38px;font-weight:700;color:#297AB1;line-height:1.16;padding-right:40px">{{ proyTitulo }}</h2>
+            <sc-for list="{{ proyParrafos }}" as="t" hint-placeholder-count="2">
+              <p style="margin-top:{{ t.margen }};font-size:17px;line-height:1.47;color:#297AB1">{{ t.texto }}</p>
+            </sc-for>
             <sc-if value="{{ proyTieneEstado }}" hint-placeholder-val="{{ false }}">
               <p style="margin-top:22px;display:inline-flex;align-items:center;gap:10px;border:1.5px solid #5BC2DC;border-radius:999px;padding:10px 22px;font-size:15px;color:#5BC2DC">{{ proyEstado }}</p>
             </sc-if>
           </div>
           <sc-if value="{{ proyTieneKpis }}" hint-placeholder-val="{{ true }}">
-          <div style="display:grid;grid-template-columns:{{ proyColumnas }};gap:18px">
+          <div data-r="fichaKpis" style="display:grid;grid-template-columns:{{ proyColumnas }};gap:18px">
             <sc-for list="{{ proyKpis }}" as="k" hint-placeholder-count="3">
-              <div style="grid-column:{{ k.tramo }};background:#fff;border:1.5px solid #5BC2DC;border-radius:12px;padding:26px 22px;text-align:center;display:flex;flex-direction:column;justify-content:center;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22);background:#F2FAFD">
-                <p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05;color:#297AB1">{{ k.valor }}</p>
-                <p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty;color:#5BC2DC">{{ k.etiqueta }}</p>
+              <div style="grid-column:{{ k.tramo }};background:{{ k.fondo }};border-radius:12px;padding:26px 22px;text-align:center;display:flex;flex-direction:column;justify-content:center;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(4,24,40,.22)">
+                <p data-cifra="1" style="font-size:40px;font-weight:700;line-height:1.05;color:#fff">{{ k.valor }}</p>
+                <p style="margin-top:10px;font-size:16px;line-height:1.35;text-wrap:pretty;color:#fff">{{ k.etiqueta }}</p>
               </div>
             </sc-for>
           </div>
           </sc-if>
-          <sc-if value="{{ proyTieneGaleria }}" hint-placeholder-val="{{ true }}">
+          <sc-if value="{{ proyTieneCarrusel }}" hint-placeholder-val="{{ true }}">
           <div onMouseEnter="{{ pausarGaleria }}" onMouseLeave="{{ seguirGaleria }}" style="display:flex;align-items:center;gap:18px">
-            <button onClick="{{ galAnterior }}" style="flex:none;width:44px;height:44px;border-radius:50%;border:1.5px solid #5BC2DC;background:#fff;color:#5BC2DC;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#5BC2DC;color:#fff;transform:translateY(-4px)">
-              <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px"><path d="M20 12H5"></path><path d="M11 6l-6 6 6 6"></path></svg>
+            <button onClick="{{ galAnterior }}" aria-label="Foto anterior" style="flex:none;width:44px;height:44px;border-radius:50%;border:1.5px solid #5BC2DC;background:#fff;color:#5BC2DC;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#5BC2DC;color:#fff;transform:translateY(-4px)">
+              <svg viewBox="0 0 24 24" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px" aria-hidden="true"><path d="M20 12H5"></path><path d="M11 6l-6 6 6 6"></path></svg>
             </button>
             <div style="flex:1;min-width:0;border-radius:24px;background:#F2FAFD;padding:12px">
               <div style="overflow:hidden;border-radius:16px">
                 <div ref="{{ refGaleria }}" style="display:flex;gap:20px;will-change:transform"></div>
               </div>
             </div>
-            <button onClick="{{ galSiguiente }}" style="flex:none;width:44px;height:44px;border-radius:50%;border:1.5px solid #5BC2DC;background:#fff;color:#5BC2DC;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#5BC2DC;color:#fff;transform:translateY(-4px)">
-              <svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px"><path d="M4 12h15"></path><path d="M13 6l6 6-6 6"></path></svg>
+            <button onClick="{{ galSiguiente }}" aria-label="Foto siguiente" style="flex:none;width:44px;height:44px;border-radius:50%;border:1.5px solid #5BC2DC;background:#fff;color:#5BC2DC;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease,background .35s ease,color .35s ease,border-color .35s ease" style-hover="background:#5BC2DC;color:#fff;transform:translateY(-4px)">
+              <svg viewBox="0 0 24 24" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor" style="width:16px;height:16px" aria-hidden="true"><path d="M4 12h15"></path><path d="M13 6l6 6-6 6"></path></svg>
             </button>
           </div>
           </sc-if>
         </div>
       </div>
+      </div>
     </div>
   </sc-if>
 
   <sc-if value="{{ fotoAbierta }}" hint-placeholder-val="{{ false }}">
-    <div onClick="{{ cerrarFoto }}" style="position:fixed;inset:0;z-index:90;background:rgba(6,26,42,.82);display:flex;align-items:center;justify-content:center;padding:60px;cursor:zoom-out;animation:wpFade .45s cubic-bezier(.2,.8,.25,1) both">
+    <div data-r="modalFondo" data-velo="1" data-saliendo="{{ salFoto }}" onClick="{{ cerrarFoto }}" style="position:fixed;inset:0;z-index:90;background:rgba(6,26,42,.82);display:flex;align-items:center;justify-content:center;padding:60px;cursor:zoom-out">
       {{ fotoImg }}
     </div>
   </sc-if>
 
+  <sc-if value="{{ menuAbierto }}" hint-placeholder-val="{{ false }}">
+    <div data-r="menuMovil" data-velo="1" data-saliendo="{{ salMenu }}" role="dialog" aria-modal="true" aria-label="Menú" style="position:fixed;inset:0;z-index:130;background:#297AB1;display:flex;flex-direction:column;padding:26px 28px 40px;overflow:auto">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <img src="assets/logo-wp-blanco.svg" alt="Water Positive 2030" style="width:62px;height:66px;object-fit:contain;display:block">
+        <button onClick="{{ cerrarMenu }}" aria-label="Cerrar menú" style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1.5px solid #fff;background:transparent;color:#fff;cursor:pointer">
+          <svg viewBox="0 0 24 24" stroke-width="2.67" stroke-linecap="round" fill="none" stroke="currentColor" style="width:18px;height:18px" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
+        </button>
+      </div>
+      <nav aria-label="Menú principal" style="display:flex;flex-direction:column;margin-top:40px">
+        <a href="#ambicion" onClick="{{ mIrSeccion }}" style="color:#fff;font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.3)">¿Qué es Water Positive 2030?</a>
+        <a href="#fabrica" onClick="{{ mIrSeccion }}" style="color:#fff;font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.3)">Fábrica</a>
+        <a href="#guardianes" onClick="{{ mIrSeccion }}" style="color:#fff;font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.3)">Guardianes del Tajo</a>
+        <a href="#mizuiku" onClick="{{ mIrSeccion }}" style="color:#fff;font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.3)">Mizuiku</a>
+        <a href="#docs" onClick="{{ mIrDocs }}" style="color:#fff;font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.3)">Documentos de interés</a>
+        <a href="#noticias" onClick="{{ mIrNoticias }}" style="color:#fff;font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.3)">Noticias</a>
+        <a href="#actividades" onClick="{{ mIrActividades }}" style="color:#fff;font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.3)">Otras iniciativas</a>
+      </nav>
+    </div>
+  </sc-if>
+
   <sc-if value="{{ videoAbierto }}" hint-placeholder-val="{{ false }}">
-    <div onClick="{{ cerrarVideo }}" style="position:fixed;inset:0;z-index:80;background:rgba(6,26,42,.82);display:flex;align-items:center;justify-content:center;padding:60px;cursor:pointer">
-      <video src="assets/video-mizuiku.mp4" autoplay="" controls="" loop="" style="width:100%;max-width:1180px;border-radius:24px;display:block;box-shadow:0 30px 80px rgba(0,0,0,.5)"></video>
+    <div data-r="modalFondo" data-velo="1" data-saliendo="{{ salVideo }}" onClick="{{ cerrarVideo }}" style="position:fixed;inset:0;z-index:80;background:rgba(6,26,42,.82);display:flex;align-items:center;justify-content:center;padding:60px;cursor:pointer">
+      <button onClick="{{ cerrarVideo }}" aria-label="Cerrar vídeo" style="position:absolute;top:22px;right:22px;width:48px;height:48px;border-radius:50%;border:1.5px solid #fff;background:rgba(6,26,42,.4);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .45s cubic-bezier(.65,0,.35,1),transform .45s cubic-bezier(.65,0,.35,1)" style-hover="background:rgba(255,255,255,.2);transform:scale(1.06)">
+        <svg viewBox="0 0 24 24" stroke-width="2.67" stroke-linecap="round" fill="none" stroke="currentColor" style="width:18px;height:18px" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
+      </button>
+      {{ videoEl }}
     </div>
   </sc-if>
 
@@ -603,92 +885,246 @@ input{font-family:inherit}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;videoBackgrounds&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;startPage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;actividades&quot;,&quot;docs&quot;,&quot;noticias&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;numTarjetasActividades&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:4,&quot;min&quot;:2,&quot;max&quot;:12,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Contenido&quot;}}">
 class Component extends DCLogic {
-  static FOTOS = ['assets/foto-plantacion.png', 'assets/aerea-plantacion.png', 'assets/gdt-car1.png', 'assets/foto-visita.png'];
+  // Carrusel de Impacto: una foto por cada acción citada en los KPIs (Layos, Bosque, voluntariado, Santa Catalina, Tajuña)
+  static FOTOS = ['assets/layos-despues.jpg', 'assets/bosque-01.jpg', 'assets/bosque-02.jpg', 'assets/agrow-02.jpg', 'assets/tajuna-01.jpg'];
   static PROYECTOS = [
-    { letra: 'A', titulo: 'Renaturalización del arroyo Layos', imagen: 'assets/layos-02.jpg',
-      fotos: ['assets/layos-02.jpg','assets/layos-03.jpg','assets/layos-07.jpg','assets/layos-13.jpg','assets/layos-17.jpg','assets/layos-20.jpg','assets/layos-09.jpg','assets/layos-10.jpg','assets/layos-14.jpg','assets/layos-12.jpg','assets/layos-23.jpg','assets/layos-01.jpg'],
-      descripcion: 'Entre diciembre de 2024 y marzo de 2025 se ejecutó una actuación de restauración ambiental en el Arroyo de Layos (Toledo) con el objetivo de mejorar la calidad ecológica del cauce, reducir los procesos erosivos, aumentar la biodiversidad y favorecer la recuperación de la vegetación de ribera.',
-      descripcion2: 'Los trabajos incluyeron la limpieza y retirada de residuos, la remodelación de taludes y márgenes, la aplicación de técnicas de bioingeniería para estabilizar el cauce, la creación de estructuras para mejorar la dinámica fluvial y una amplia revegetación con especies autóctonas adaptadas al entorno. Además, se incorporaron elementos de divulgación ambiental para poner en valor la recuperación del espacio.',
-      kpis: [{ valor: '2.411', etiqueta: 'plantas autóctonas introducidas' }, { valor: '14', etiqueta: 'especies autóctonas plantadas' }, { valor: '3', etiqueta: 'deflectores hidráulicos instalados' }, { valor: '24 m', etiqueta: 'de fiber rolls prevegetados' }] },
-    { letra: 'B', titulo: 'Programa de reforestación Bosque Suntory', imagen: 'assets/foto-teatro.png',
+    { letra: 'A', titulo: 'Renaturalización del arroyo Layos', imagen: 'assets/layos-despues.jpg', portada: 'assets/layos-despues.jpg',
+      comparativa: { antes: 'assets/layos-comp-antes.jpg', despues: 'assets/layos-comp-despues.jpg', aspecto: '16 / 10',
+        etqAntes: 'Antes', etqDespues: 'Después',
+        altAntes: 'Antes: taludes y cauce del arroyo Layos recién terminada la obra',
+        altDespues: 'Después: taludes y cauce del arroyo Layos con la vegetación recuperada',
+        aria: 'Comparar el arroyo Layos antes y después de la actuación',
+        pie: 'Desliza para comparar el arroyo Layos al terminar la obra y tras la recuperación de la vegetación.' },
+      fotos: ['assets/layos-despues.jpg','assets/layos-res-1.jpg','assets/layos-res-2.jpg','assets/layos-res-3.jpg','assets/layos-02.jpg','assets/layos-03.jpg','assets/layos-07.jpg','assets/layos-13.jpg','assets/layos-17.jpg','assets/layos-20.jpg','assets/layos-09.jpg','assets/layos-10.jpg','assets/layos-14.jpg','assets/layos-12.jpg','assets/layos-23.jpg','assets/layos-01.jpg'],
+      parrafos: [
+        'Entre diciembre de 2024 y marzo de 2025 se ejecutó una actuación de restauración ambiental en el Arroyo de Layos (Toledo) con el objetivo de mejorar la calidad ecológica del cauce, reducir los procesos erosivos, aumentar la biodiversidad y favorecer la recuperación de la vegetación de ribera.',
+        'Los trabajos incluyeron la limpieza y retirada de residuos, la remodelación de taludes y márgenes, la aplicación de técnicas de bioingeniería para estabilizar el cauce, la creación de estructuras para mejorar la dinámica fluvial y una amplia revegetación con especies autóctonas adaptadas al entorno. Además, se incorporaron elementos de divulgación ambiental para poner en valor la recuperación del espacio.',
+        'Tras la obra, seguimos realizando mantenimientos periódicos del arroyo y de las plantaciones para asegurar que la vegetación se asiente y que el espacio se conserve en buen estado.'
+      ],
+      kpis: [{ valor: '2.411', etiqueta: 'plantas autóctonas introducidas' }, { valor: '14', etiqueta: 'distintas especies de árboles, arbustos y plantas de ribera' }, { valor: '3', etiqueta: 'deflectores hidráulicos para reducir la erosión del cauce' }, { valor: '24 m', etiqueta: 'de rollos de fibra de coco con plantas ya incorporadas' }] },
+    { letra: 'B', titulo: 'Programa de reforestación Bosque Suntory', imagen: 'assets/bosque-01.jpg', portada: 'assets/bosque-02.jpg',
+      fotos: ['assets/bosque-01.jpg','assets/bosque-02.jpg','assets/bosque-03.jpg','assets/bosque-04.jpg','assets/bosque-05.jpg','assets/bosque-06.jpg','assets/bosque-07.jpg','assets/bosque-08.jpg','assets/bosque-09.jpg','assets/bosque-10.jpg','assets/bosque-11.jpg'],
       logo: 'assets/logo-bosque-suntory.png', logoAlt: 'Bosque Suntory · Santuario Natural del Agua',
-      descripcion: 'Con la creación del Bosque Suntory en 2023, iniciamos un proyecto de restauración ecológica para recuperar un bosque mediterráneo en Layos (Toledo), transformando terrenos degradados en un espacio capaz de generar beneficios ambientales duraderos. A través de la plantación de especies autóctonas y la restauración de los ecosistemas locales, contribuimos a mejorar la salud del entorno, proteger los recursos hídricos de la cuenca del Guajaraz, fomentar la biodiversidad y apoyar la acción climática mediante la captura de carbono.',
-      descripcion2: 'Más allá de la reforestación, esta iniciativa integra la participación de empleados y voluntarios, fortaleciendo el vínculo entre las personas y la naturaleza. Un proyecto con visión de futuro que combina impacto ambiental positivo, implicación social y un compromiso a largo plazo con la conservación y mejora del territorio.',
-      kpis: [{ valor: '3 ha', etiqueta: 'reforestadas desde que se inició el proyecto' }, { valor: '22', etiqueta: 'especies autóctonas plantadas de árboles y arbustos' }, { valor: '9.939', etiqueta: 'plantas previstas al finalizar el proyecto' }, { valor: 'X', etiqueta: 'voluntariados realizados' }, { valor: 'X', etiqueta: 'voluntarios han participado en la reforestación' }, { valor: '4,56 ha', etiqueta: 'de Bosque Suntory en total' }] },
-    { letra: 'C', titulo: 'Proyecto de Eficiencia Hídrica y Agricultura regenerativa', imagen: 'assets/aerea-plantacion.png',
-      descripcion: 'En la Finca Santa Catalina, situada en la cuenca del río Tajo, se ha desarrollado un proyecto pionero de eficiencia hídrica que combina riego de precisión, monitorización digital, cubiertas vegetales y mejora de la salud del suelo.',
-      descripcion2: 'La iniciativa ha demostrado que es posible reducir el consumo de agua, aumentar la resiliencia de los cultivos y mejorar la biodiversidad sin comprometer la productividad agrícola.',
-      kpis: [{ valor: '117.925 m³', etiqueta: 'de agua ahorrada en total en 2025' }, { valor: '100 ha', etiqueta: 'gestionadas de olivar y almendro' }, { valor: '144', etiqueta: 'especies identificadas mediante análisis de biodiversidad y ADN ambiental' }, { valor: '27', etiqueta: 'profesionales del sector agrícola formados en el taller de 2026' }] },
-    { letra: 'D', titulo: 'Restauración del río Tajuña: eliminación de infraestructuras obsoletas', imagen: 'assets/gdt-car1.png',
-      descripcion: 'Participamos en un proyecto de restauración fluvial junto a AEMS-Ríos con Vida y CIREF para eliminar tres azudes en el río Tajuña. La actuación permitirá recuperar la conectividad del río, mejorar su estado ecológico y devolver al sistema hídrico un importante volumen de agua.',
-      descripcion2: 'Se trata además de una iniciativa pionera en España por la colaboración entre una empresa privada y organizaciones ambientales. Las obras están previstas para comenzar a finales de agosto.',
-      kpis: [{ valor: '3', etiqueta: 'azudes eliminados en el río Tajuña' }, { valor: '+13 km', etiqueta: 'de curso fluvial restaurado' }, { valor: '58%', etiqueta: 'de cofinanciación, modelo pionero de colaboración empresa privada-ONG' }, { valor: '1.000.000 m³/año', etiqueta: 'de agua recuperada total' }, { valor: '580.000 m³/año', etiqueta: 'de agua recuperada (contribución SBFI del 58%)' }] },
-    { letra: 'E', titulo: 'Desarrollo de territorios esponja: acciones piloto en la Fundación Carral', imagen: 'assets/carral-4.jpg',
-      fotos: ['assets/carral-4.jpg','assets/carral-5.jpg','assets/carral-9.jpg','assets/carral-3.jpg','assets/carral-6.jpg','assets/carral-7.jpg','assets/carral-8.jpg','assets/carral-2.jpg','assets/carral-1.jpg'],
-      descripcion: 'A finales de 2026 se pondrá en marcha una iniciativa de agricultura de conservación en la cuenca del arroyo Ramabujas (Toledo), orientada a reducir la erosión del suelo, aumentar la infiltración de agua y mejorar la resiliencia del territorio frente a episodios de lluvias intensas. El proyecto combina la implantación de setos vivos, el cultivo siguiendo curvas de nivel y la aplicación piloto de técnicas de siembra directa en terrenos agrícolas de secano.',
-      descripcion2: 'Además de las actuaciones sobre el terreno, el proyecto incluye un programa de seguimiento para evaluar su contribución a la mejora de la biodiversidad, la calidad del suelo y la retención de agua en la cuenca.',
-      kpis: [{ valor: '167 ha', etiqueta: 'de superficie agrícola incluidas en el convenio' }, { valor: '19,2 km', etiqueta: 'de setos vivos a implantar' }, { valor: '100%', etiqueta: 'de la superficie cultivada gestionada con arado siguiendo curvas de nivel' }, { valor: '46.683 m³', etiqueta: 'de agua recuperada estimada para finales de 2026' }] },
+      parrafos: [
+        'Con la creación del Bosque Suntory en 2023, se ha iniciado un proyecto de restauración ecológica para recuperar una parte del bosque mediterráneo en Layos (Toledo), transformando terrenos degradados en un espacio capaz de generar beneficios ambientales duraderos. A través de la plantación de especies autóctonas y la restauración de los ecosistemas locales, contribuimos a proteger los recursos hídricos de la cuenca del Guajaraz, fomentar la biodiversidad y apoyar la acción climática mediante la captura de carbono.',
+        'Esta iniciativa también integra la participación de trabajadores y voluntarios, fortaleciendo el vínculo entre las personas y la naturaleza. Es un proyecto con visión hacia el futuro que combina impacto ambiental positivo, implicación social y un compromiso con la conservación y mejora del territorio.'
+      ],
+      kpis: [{ valor: '3,6 ha', etiqueta: 'reforestadas desde el inicio del proyecto' }, { valor: '22', etiqueta: 'especies autóctonas plantadas de árboles y arbustos' }, { valor: '8.241', etiqueta: 'plantas plantadas desde el inicio del proyecto' }, { valor: '15', etiqueta: 'voluntariados realizados' }, { valor: '+250', etiqueta: 'participaciones en el voluntariado de reforestación del Bosque Suntory' }] },
+    { letra: 'C', titulo: 'Proyecto de Eficiencia Hídrica y Agricultura regenerativa', imagen: 'assets/agrow-02.jpg', portada: 'assets/agrow-02.jpg',
+      comparativa: { antes: 'assets/agrow-comp-antes.jpg', despues: 'assets/agrow-comp-despues.jpg', aspecto: '3 / 4',
+        etqAntes: 'Antes', etqDespues: 'Con cubierta vegetal',
+        altAntes: 'Antes: calle de almendros con el suelo desnudo y seco',
+        altDespues: 'Con cubierta vegetal: la misma calle de almendros con el suelo cubierto de vegetación',
+        aria: 'Comparar la Finca Santa Catalina antes y con cubierta vegetal',
+        pie: 'Desliza para comparar la finca antes y con la cubierta vegetal entre los almendros.' },
+      fotos: ['assets/agrow-03.jpg','assets/agrow-04.jpg','assets/agrow-05.jpg','assets/agrow-06.jpg','assets/agrow-02.jpg'],
+      parrafos: [
+        'La Finca Santa Catalina es una explotación de regadío de olivar y almendro situada en la cuenca del Guajaraz, donde se ha desarrollado un proyecto pionero de eficiencia hídrica que combina riego de precisión, monitorización digital y cubiertas vegetales. Gracias a estas medidas, el cultivo recibe el agua que realmente necesita y el suelo retiene mejor la lluvia, ya que se reduce la erosión y la escorrentía.',
+        'La iniciativa ha demostrado que es posible reducir el consumo de agua sin comprometer la productividad agrícola. Además, se ha compartido esta experiencia con profesionales del sector agrícola de la zona a través de un taller de formación, para fomentar la adopción de estas prácticas en otras explotaciones de la cuenca.'
+      ],
+      kpis: [{ valor: '90.116 m³', etiqueta: 'de agua ahorrada por la optimización del riego en 2025' }, { valor: '27.809 m³', etiqueta: 'de agua retenida en el suelo por las cubiertas vegetales en 2025' }, { valor: '144', etiqueta: 'especies identificadas mediante estudios de ADN ambiental' }, { valor: '27', etiqueta: 'profesionales del sector agrícola participantes en el taller formativo' }] },
+    { letra: 'D', titulo: 'Restauración del río Tajuña: eliminación de infraestructuras obsoletas', imagen: 'assets/tajuna-01.jpg', portada: 'assets/tajuna-01.jpg',
+      fotos: ['assets/tajuna-01.jpg','assets/tajuna-02.jpg','assets/tajuna-03.jpg','assets/tajuna-04.jpg','assets/tajuna-05.jpg','assets/tajuna-06.jpg'],
+      parrafos: [
+        'Se ha participado en un proyecto de restauración fluvial junto a AEMS-Ríos con Vida, CIREF y el programa europeo Open Rivers, para eliminar infraestructura obsoleta en el río Tajuña. En esta acción se eliminaron azudes antiguos que llevaban décadas sin uso y cortaban el paso del agua, de los sedimentos y de las especies de peces autóctonas.',
+        'La actuación permite recuperar la dinámica natural del río y su conectividad, mejorar su estado ecológico y mejorar la resiliencia a los efectos del calentamiento global. Además, es una iniciativa pionera en España por la colaboración entre una empresa privada y organizaciones ambientales.'
+      ],
+      kpis: [{ valor: '+1 millón m³', etiqueta: 'de agua recuperada total por año' }, { valor: '58%', etiqueta: 'de cofinanciación del coste de ejecución de las obras, equivalente a +600.000 m³/año de agua recuperada' }, { valor: '3', etiqueta: 'azudes en desuso eliminados' }, { valor: '+13 km', etiqueta: 'de curso fluvial restaurado' }] },
+    { letra: 'E', titulo: 'Desarrollo de territorios esponja: acciones piloto en la Fundación Carral', imagen: 'assets/carral-portada.jpg', portada: 'assets/carral-portada.jpg',
+      fotos: ['assets/carral-portada.jpg','assets/carral-4.jpg','assets/carral-5.jpg','assets/carral-9.jpg','assets/carral-3.jpg','assets/carral-6.jpg','assets/carral-7.jpg','assets/carral-8.jpg','assets/carral-2.jpg','assets/carral-1.jpg'],
+      parrafos: [
+        'A finales del 2026 se pondrá en marcha una iniciativa de agricultura de conservación en la cuenca del arroyo Ramabujas (Toledo), orientada a reducir la erosión del suelo, aumentar la infiltración de agua y mejorar la resiliencia del territorio frente a episodios de lluvias intensas. El proyecto combina la implantación de setos vivos, el cultivo siguiendo curvas de nivel y la aplicación piloto de técnicas de siembra directa en terrenos agrícolas de secano.',
+        'Además de las actuaciones sobre el terreno, el proyecto incluye un programa de seguimiento para evaluar su contribución a la mejora de la biodiversidad, la calidad del suelo y la retención de agua en la cuenca.'
+      ],
+      kpis: [{ valor: '167 ha', etiqueta: 'de superficie agrícola incluidas en el convenio' }, { valor: '19,2 km', etiqueta: 'de setos vivos a implantar' }, { valor: '3 ha', etiqueta: 'de siembra directa en el piloto de 2026' }, { valor: '100%', etiqueta: 'de la superficie cultivada se gestionará con arado siguiendo curvas de nivel' }, { valor: '46.683 m³', etiqueta: 'de agua recuperada estimada para finales del 2026' }] },
     { letra: 'F', titulo: 'Inspección de tuberías de suministro de agua potable para la identificación de fugas', imagen: 'assets/foto-osmosis.png',
-      descripcion: 'Nueva propuesta de proyecto para reducir las pérdidas de agua en la red principal de abastecimiento de Toledo mediante la detección y reparación de fugas en grandes conducciones. La iniciativa contribuirá a la reposición hídrica en la cuenca del río Tajo, generando ahorros de agua medibles y verificables.',
-      descripcion2: 'Objetivo: recuperar hasta 400.000 m³ de agua al año mediante la detección y reparación de fugas en 37 km de conducciones principales del sistema de abastecimiento de Toledo, contribuyendo a la resiliencia hídrica de la cuenca del Tajo.',
-      estado: 'Estado: propuesta de proyecto (pendiente de aprobación e implementación)',
+      parrafos: [
+        'Nuevo proyecto para reducir las pérdidas de agua en la red principal de abastecimiento de Toledo mediante la detección y reparación de fugas en grandes conducciones. La inspección se realiza con una tecnología que recorre el interior de las tuberías sin interrumpir el suministro. Esta acción contribuye a la resiliencia hídrica generando ahorros de agua medibles y verificables.',
+        'Objetivo: recuperar hasta 200.000 m³ de agua al año mediante la detección y reparación de fugas en 37 km de conducciones principales del sistema de abastecimiento de Toledo.'
+      ],
+      estado: 'Estado: en ejecución (septiembre–diciembre de 2026)',
       kpis: [], galeria: false }
   ];
+
+  // Columnas de la rejilla de KPIs de una ficha según cuántos haya
+  static columnasKpi(n) {
+    if (n === 5) return 6;
+    return n === 4 ? 2 : (n === 6 ? 3 : Math.max(1, n));
+  }
+
+  // Azules alternos en damero: ningún recuadro comparte color con su vecino
+  static fondoKpi(i, n) {
+    let fila, col;
+    if (n === 5) { fila = i < 3 ? 0 : 1; col = i < 3 ? i : i - 3; }
+    else { const c = Component.columnasKpi(n); fila = Math.floor(i / c); col = i % c; }
+    return (fila + col) % 2 === 0 ? '#297AB1' : '#5BC2DC';
+  }
+  static ACCIONES_FABRICA = [
+    { anio: '2022', titulo: 'Recuperación del agua de rechazo de la ósmosis', texto: 'una nueva unidad de ósmosis permite aprovechar el agua de rechazo.' },
+    { anio: '2022', titulo: 'Depósitos de recuperación', texto: 'almacenan agua recuperada de las líneas de producción para volver a usarla.' },
+    { anio: '2024', titulo: 'Limpiezas más eficientes', texto: 'hemos optimizado los ciclos de limpieza de los equipos para usar menos agua en cada uno.' },
+    { anio: '2024', titulo: 'Descalcificadores', texto: 'hemos reducido a la mitad el tiempo de regeneración, lo que conlleva un ahorro de agua.' },
+    { anio: '2025', titulo: 'Válvulas reguladoras de presión', texto: 'evitan consumos innecesarios por exceso de presión en la red interna.' }
+  ];
+  // Convierte un style en línea a objeto React (para elementos creados desde la lógica)
+  static estilo(css) {
+    const o = {};
+    String(css).split(';').forEach((d) => {
+      const i = d.indexOf(':'); if (i < 0) return;
+      let k = d.slice(0, i).trim(); const v = d.slice(i + 1).trim(); if (!k) return;
+      if (k.startsWith('-webkit-')) k = 'Webkit-' + k.slice(8);
+      o[k.replace(/-(\w)/g, (m, c) => c.toUpperCase())] = v;
+    });
+    return o;
+  }
+  // Las imágenes y vídeos con ruta variable se crean aquí y no en el marcado: así el navegador
+  // no intenta descargar la ruta sin rellenar («{{ … }}») mientras carga la página.
+  static img(src, alt, css, extra) {
+    return React.createElement('img', Object.assign({ src, alt: alt || '', style: Component.estilo(css) }, extra || {}));
+  }
+
+  // Orden y nombres fijados por el cliente para los filtros
+  static PROYECTOS_DOC = ['Estudios de la cuenca', 'Renaturalización del arroyo Layos', 'Bosque Suntory', 'Eficiencia hídrica y agricultura regenerativa', 'Restauración del río Tajuña', 'Territorios esponja – Fundación Carral', 'Inspección de tuberías'];
+  static TIPOS_DOC = ['Estudios técnicos', 'Biodiversidad y suelo', 'Obras y mantenimiento', 'Seguimiento y resultados', 'Publicaciones científicas', 'Divulgación y participación'];
+  // archivo: null = documento pendiente de recibir del cliente (se muestra como «Próximamente»)
   static DOCUMENTOS = [
     { titulo: 'Impactos hidrológicos del cambio climático en El Torcón y Picadas',
       resumen: 'Cómo funciona hoy el sistema hidrológico de ambas cuencas y cómo puede cambiar con el clima futuro.',
-      tipo: 'Resumen divulgativo', anio: '2024', idioma: 'ES',
-      archivo: 'docs/resumen-divulgativo-torcon-picadas-hml-uah.pdf', proyecto: 'El Torcón y Picadas' },
+      anio: '2024', idioma: 'ES', proyecto: 'Estudios de la cuenca', tipo: 'Divulgación y participación',
+      archivo: 'docs/resumen-divulgativo-torcon-picadas-hml-uah.pdf' },
     { titulo: 'Simulación del comportamiento hidrológico de El Torcón y Picadas con SWAT+',
       resumen: 'Modelo SWAT+ de las cuencas que abastecen a Toledo y Madrid, con trabajo de campo y datos propios.',
-      tipo: 'Informe técnico', anio: '2024', idioma: 'EN',
-      archivo: 'docs/2024-uah-simulador-swat.pdf', proyecto: 'El Torcón y Picadas' },
+      anio: '2024', idioma: 'EN', proyecto: 'Estudios de la cuenca', tipo: 'Estudios técnicos',
+      archivo: 'docs/2024-uah-simulador-swat.pdf' },
     { titulo: 'Innovación en la calibración de modelos hidrológicos frente al cambio climático',
       resumen: 'La “calibración inversa” aplicada al Guajaraz: hasta un 28% menos de aportación al embalse.',
-      tipo: 'Artículo científico', anio: '2024', idioma: 'EN',
-      archivo: 'docs/2024-uah-hydrological-modelling-calibration.pdf', proyecto: 'Santuario del agua Guajaraz' },
-    { titulo: 'Calidad del agua en el entorno del río Layos',
-      resumen: 'Puntos, parámetros y resultados de la campaña 2024 en el tributario del Guajaraz.',
-      tipo: 'Informe de seguimiento', anio: '2024', idioma: 'EN',
-      archivo: 'docs/2024-calidad-agua-rio-layos.pdf', proyecto: 'Santuario del agua Guajaraz' },
+      anio: '2024', idioma: 'EN', proyecto: 'Estudios de la cuenca', tipo: 'Publicaciones científicas',
+      archivo: 'docs/2024-uah-hydrological-modelling-calibration.pdf' },
     { titulo: 'Caracterización hidrogeológica y modelización de la cuenca del Guajaraz',
       resumen: 'Informe síntesis de la Universidad de Alcalá: geología, recursos hídricos y modelo hidrológico de la cuenca.',
-      tipo: 'Informe síntesis', anio: '2024', idioma: 'EN',
-      archivo: 'docs/2024-uah-caracterizacion-hidrogeologica-guajaraz.pdf', proyecto: 'Santuario del agua Guajaraz' },
-    { titulo: 'Biodiversidad del entorno del embalse del Guajaraz',
-      resumen: 'Flora, vegetación, odonatos, mariposas y vertebrados del entorno, con indicadores de seguimiento.',
-      tipo: 'Estudio', anio: '2023', idioma: 'ES',
-      archivo: 'docs/2023-memoria-biodiversidad-guajaraz.pdf', proyecto: 'Santuario del agua Guajaraz' },
-    { titulo: 'Proyecto de reforestación y Plan de Gestión en Layos',
-      resumen: 'Terrenos, especies, densidades y plan de gestión para inscribir un proyecto de absorción de CO₂ de tipo A.',
-      tipo: 'Proyecto', anio: '2025', idioma: 'ES',
-      archivo: 'docs/bs-proyecto-reforestacion-plan-gestion.pdf', proyecto: 'Reforestación Bosque Suntory' },
-    { titulo: 'Ejecución de la obra de mejora ambiental del arroyo de Layos',
-      resumen: 'Bioingeniería, estabilización de taludes y revegetación del tramo fluvial, con el antes y el después de la actuación.',
-      tipo: 'Informe de obra', anio: '2025', idioma: 'ES',
-      archivo: 'docs/rl-informe-ejecucion-obra-2024-2025.pdf', proyecto: 'Renaturalización del arroyo Layos' },
-    { titulo: 'Mantenimiento del arroyo y las plantaciones de Layos',
-      resumen: 'Resumen mes a mes de los trabajos de 2025 en la obra del arroyo y en las plantaciones del bosque Suntory.',
-      tipo: 'Informe de mantenimiento', anio: '2025', idioma: 'ES',
-      archivo: 'docs/rl-informe-mantenimiento-2025.pdf', proyecto: 'Renaturalización del arroyo Layos' },
-    { titulo: 'Eficiencia hídrica mediante riego y cubierta vegetal',
-      resumen: 'Informe final del proyecto en la Finca Santa Catalina: ahorro volumétrico logrado, actividades y próximos retos.',
-      tipo: 'Informe final', anio: '2025', idioma: 'EN',
-      archivo: 'docs/2025-ar-informe-final-agua-ahorrada.pdf', proyecto: 'Agricultura regenerativa' },
-    { titulo: 'Análisis metagenómico del microbioma del suelo',
-      resumen: 'Secuenciación y bioinformática de las comunidades de bacterias y hongos del suelo cultivado.',
-      tipo: 'Informe de laboratorio', anio: '2025', idioma: 'ES',
-      archivo: 'docs/2025-ar-informe-biologia-molecular.pdf', proyecto: 'Agricultura regenerativa' },
-    { titulo: 'Biodiversidad de la fauna edáfica en la Finca Santa Catalina',
-      resumen: 'Estudio previo de la vida del suelo en Casasbuenas (Toledo), línea de base del proyecto.',
-      tipo: 'Estudio previo', anio: '2025', idioma: 'ES',
-      archivo: 'docs/2025-ar-memoria-inicial-biodiversidad.pdf', proyecto: 'Agricultura regenerativa' },
+      anio: '2024', idioma: 'EN', proyecto: 'Estudios de la cuenca', tipo: 'Estudios técnicos',
+      archivo: 'docs/2024-uah-caracterizacion-hidrogeologica-guajaraz.pdf' },
     { titulo: 'Aforos en la cuenca del Guajaraz',
       resumen: 'Aforos propios donde no hay estaciones oficiales, para conocer el caudal real de la cuenca.',
-      tipo: 'Informe de seguimiento', anio: '2024', idioma: 'EN',
-      archivo: 'docs/2024-gauging-guajaraz.pdf', proyecto: 'Santuario del agua Guajaraz' }
+      anio: '2024', idioma: 'EN', proyecto: 'Estudios de la cuenca', tipo: 'Seguimiento y resultados',
+      archivo: 'docs/2024-gauging-guajaraz.pdf' },
+    { titulo: 'Biodiversidad del entorno del embalse del Guajaraz',
+      resumen: 'Flora, vegetación, odonatos, mariposas y vertebrados del entorno, con indicadores de seguimiento.',
+      anio: '2023', idioma: 'ES', proyecto: 'Estudios de la cuenca', tipo: 'Biodiversidad y suelo',
+      archivo: 'docs/2023-memoria-biodiversidad-guajaraz.pdf' },
+    { titulo: 'Caracterización preliminar de las masas de agua de la cuenca del Guajaraz (Restaurarios)',
+      resumen: 'Póster de Restaurarios 2023: índices oficiales de estado ecológico aplicados a una cuenca sin masas de agua declaradas.',
+      anio: '2023', idioma: 'EN', proyecto: 'Estudios de la cuenca', tipo: 'Publicaciones científicas',
+      archivo: 'docs/2023-poster-restaurarios-guajaraz.pdf' },
+    { titulo: 'Caracterización de las aguas superficiales de la cuenca del Guajaraz',
+      resumen: 'Puntos de muestreo, indicadores y estado de los cauces: campaña de verano y actualización de diciembre de 2022.',
+      anio: '2022', idioma: 'EN', proyecto: 'Estudios de la cuenca', tipo: 'Estudios técnicos',
+      archivo: 'docs/2022-aguas-superficiales-guajaraz.pdf' },
+    { titulo: 'Memoria del taller de participación sobre la cuenca del Guajaraz',
+      resumen: 'Cuarto taller con actores locales (noviembre de 2022): valoración y priorización de las acciones del proyecto.',
+      anio: '2022', idioma: 'ES', proyecto: 'Estudios de la cuenca', tipo: 'Divulgación y participación',
+      archivo: 'docs/2022-memoria-taller-participacion-guajaraz.pdf' },
+    { titulo: 'Monitorización y modelización hidrológica de la cuenca del Guajaraz (IAHR)',
+      resumen: 'Comunicación al 39.º Congreso Mundial IAHR (Granada, 2022) sobre la hidrología al servicio de un santuario del agua.',
+      anio: '2022', idioma: 'EN', proyecto: 'Estudios de la cuenca', tipo: 'Publicaciones científicas',
+      archivo: 'docs/2022-iahr-monitorizacion-guajaraz.pdf' },
+    { titulo: 'Póster resumen: monitorización y modelización hidrológica de la cuenca del Guajaraz (IAHR)',
+      resumen: 'Versión en póster de la comunicación presentada en el Congreso Mundial IAHR 2022.',
+      anio: '2022', idioma: 'EN', proyecto: 'Estudios de la cuenca', tipo: 'Publicaciones científicas',
+      archivo: 'docs/2022-poster-iahr-guajaraz.pdf' },
+    { titulo: 'Calidad del agua en el entorno del arroyo Layos (2024-2025)',
+      resumen: 'Puntos, frecuencia, parámetros y resultados del seguimiento de la calidad del agua en 2024-2025.',
+      anio: '2025', idioma: 'EN', proyecto: 'Renaturalización del arroyo Layos', tipo: 'Seguimiento y resultados',
+      archivo: 'docs/2025-calidad-agua-arroyo-layos.pdf' },
+    { titulo: 'Ejecución de la obra de mejora ambiental del arroyo de Layos',
+      resumen: 'Bioingeniería, estabilización de taludes y revegetación del tramo fluvial, con el antes y el después de la actuación.',
+      anio: '2025', idioma: 'ES', proyecto: 'Renaturalización del arroyo Layos', tipo: 'Obras y mantenimiento',
+      archivo: 'docs/rl-informe-ejecucion-obra-2024-2025.pdf' },
+    { titulo: 'Mantenimiento del arroyo y las plantaciones de Layos',
+      resumen: 'Resumen mes a mes de los trabajos de 2025 en la obra del arroyo y en las plantaciones del bosque Suntory.',
+      anio: '2025', idioma: 'ES', proyecto: 'Renaturalización del arroyo Layos', tipo: 'Obras y mantenimiento',
+      archivo: 'docs/rl-informe-mantenimiento-2025.pdf' },
+    { titulo: 'Estudios previos para la rehabilitación del arroyo Layos',
+      resumen: 'Calidad hidromorfológica del tramo y programa de seguimiento fisicoquímico que justifican la actuación.',
+      anio: '2024', idioma: 'ES', proyecto: 'Renaturalización del arroyo Layos', tipo: 'Estudios técnicos',
+      archivo: 'docs/2024-estudios-previos-arroyo-layos.pdf' },
+    { titulo: 'Proyecto de reforestación y Plan de Gestión en Layos',
+      resumen: 'Terrenos, especies, densidades y plan de gestión para inscribir un proyecto de absorción de CO₂ de tipo A.',
+      anio: '2025', idioma: 'ES', proyecto: 'Bosque Suntory', tipo: 'Estudios técnicos',
+      archivo: 'docs/bs-proyecto-reforestacion-plan-gestion.pdf' },
+    { titulo: 'Eficiencia hídrica mediante riego y cubierta vegetal',
+      resumen: 'Informe final del proyecto en la Finca Santa Catalina: ahorro volumétrico logrado, actividades y próximos retos.',
+      anio: '2025', idioma: 'EN', proyecto: 'Eficiencia hídrica y agricultura regenerativa', tipo: 'Seguimiento y resultados',
+      archivo: 'docs/2025-ar-informe-final-agua-ahorrada.pdf' },
+    { titulo: 'Análisis metagenómico del microbioma del suelo',
+      resumen: 'Secuenciación y bioinformática de las comunidades de bacterias y hongos del suelo cultivado.',
+      anio: '2025', idioma: 'ES', proyecto: 'Eficiencia hídrica y agricultura regenerativa', tipo: 'Biodiversidad y suelo',
+      archivo: 'docs/2025-ar-informe-biologia-molecular.pdf' },
+    { titulo: 'Biodiversidad de la fauna edáfica en la Finca Santa Catalina',
+      resumen: 'Estudio previo de la vida del suelo en Casasbuenas (Toledo), línea de base del proyecto.',
+      anio: '2025', idioma: 'ES', proyecto: 'Eficiencia hídrica y agricultura regenerativa', tipo: 'Biodiversidad y suelo',
+      archivo: 'docs/2025-ar-memoria-inicial-biodiversidad.pdf' },
+    { titulo: 'Biodiversidad y microbioma del suelo mediante ADN ambiental – Agricultura regenerativa',
+      resumen: 'Informe resumen del muestreo de ADN ambiental del suelo en la Finca Santa Catalina.',
+      anio: '2026', idioma: 'EN', proyecto: 'Eficiencia hídrica y agricultura regenerativa', tipo: 'Biodiversidad y suelo',
+      archivo: null },
+    { titulo: 'Cálculo del ahorro de agua con cubiertas vegetales',
+      resumen: 'Estimación del agua retenida en el suelo gracias a las cubiertas vegetales de la finca.',
+      anio: '2025', idioma: 'ES', proyecto: 'Eficiencia hídrica y agricultura regenerativa', tipo: 'Seguimiento y resultados',
+      archivo: null },
+    { titulo: 'Taller sobre cubiertas vegetales con ASAJA Toledo',
+      resumen: 'Jornada formativa con profesionales del sector agrícola de la cuenca (marzo de 2026).',
+      anio: '2026', idioma: 'ES', proyecto: 'Eficiencia hídrica y agricultura regenerativa', tipo: 'Divulgación y participación',
+      archivo: null },
+    { titulo: 'Validación del beneficio hídrico de la restauración del río Tajuña',
+      resumen: 'Informe de validación VWBA del agua recuperada con la retirada de los azudes del Tajuña.',
+      anio: '2026', idioma: 'EN', proyecto: 'Restauración del río Tajuña', tipo: 'Seguimiento y resultados',
+      archivo: null },
+    { titulo: 'Territorios esponja en la cuenca del Ramabujas (ICBA 2026)',
+      resumen: 'Póster sobre el enfoque de territorio esponja para mitigar inundaciones y mejorar la agrobiodiversidad tras la DANA de 2023.',
+      anio: '2026', idioma: 'EN', proyecto: 'Territorios esponja – Fundación Carral', tipo: 'Publicaciones científicas',
+      archivo: 'docs/2026-poster-icba-ramabujas.pdf' }
   ];
-  state = { pagina: null, busqueda: '', video: false, proyecto: null, foto: null,
+
+  // Noticias: actualidad de agua/sostenibilidad de la web de Suntory + 2 externas pedidas por el cliente
+  static NOTICIAS = [
+    { titulo: 'Suntory Beverage & Food Spain devuelve a la naturaleza el equivalente al 20% del consumo anual de agua de su planta de Toledo',
+      fuente: 'Suntory Beverage & Food Iberia', imagen: 'assets/n-20-por-ciento.jpg',
+      url: 'https://suntorybeverageandfood-europe.com/es-es/iberia/noticias/actualidad/suntory-beverage-food-spain-devuelve-a-la-naturaleza-el-equivalente-al-20-del-consumo-anual-de-agua-de-su-planta-de-toledo/' },
+    { titulo: 'Suntory (La Casera y Schweppes) y su gran proyecto de agua en Toledo',
+      fuente: 'Expansión', imagen: 'assets/n-expansion.jpg',
+      url: 'https://www.expansion.com/sostenibilidad/2026/05/06/69f9f49ce5fdea3c708b458d.html' },
+    { titulo: '«Water Positive Day»: el reto tangible de devolver al planeta más agua de la que consumimos',
+      fuente: 'OKDiario · OKGREEN', imagen: 'assets/n-okdiario.jpg',
+      url: 'https://okdiario.com/okgreen/water-positive-day-reto-tangible-devolver-planeta-mas-agua-que-consumimos-18792286' },
+    { titulo: 'Guardianes del Tajo, el proyecto de Suntory Beverage & Food Spain, reconocido por la Consejería de Desarrollo Sostenible de Castilla-La Mancha',
+      fuente: 'Suntory Beverage & Food Iberia', imagen: 'assets/n-reconocido-clm.jpg',
+      url: 'https://suntorybeverageandfood-europe.com/es-es/iberia/noticias/actualidad/guardianes-del-tajo-el-proyecto-de-suntory-beverage-food-spain-reconocido-por-la-consejeria-de-desarrollo-sostenible-de-castilla-la-mancha/' },
+    { titulo: 'Suntory Beverage & Food Spain conmemora el Día Mundial de la Educación Ambiental: más de 4.500 niños ya han participado en Mizuiku',
+      fuente: 'Suntory Beverage & Food Iberia', imagen: 'assets/n-mizuiku-4500.jpg',
+      url: 'https://suntorybeverageandfood-europe.com/es-es/iberia/noticias/actualidad/suntory-beverage-food-spain-conmemora-el-dia-mundial-de-la-educacion-ambiental-mas-de-4500-ninos-ya-han-participado-en-mizuiku' },
+    { titulo: 'Suntory Beverage & Food Spain reducirá un 20% su consumo de agua en 2030 y un 50% en 2050',
+      fuente: 'Suntory Beverage & Food Iberia', imagen: 'assets/n-reducira-20.jpg',
+      url: 'https://suntorybeverageandfood-europe.com/es-es/iberia/noticias/actualidad/suntory-beverage-food-spain-reducira-un-20-su-consumo-de-agua-en-2030-y-un-50-en-2050' },
+    { titulo: 'Suntory Beverage & Food Spain presenta Guardianes del Tajo, su primer santuario natural del agua en España',
+      fuente: 'Suntory Beverage & Food Iberia', imagen: 'assets/n-presenta-gdt.jpg',
+      url: 'https://suntorybeverageandfood-europe.com/es-es/iberia/noticias/actualidad/suntory-beverage-food-spain-presenta-guardianes-del-tajo-su-primer-santuario-natural-del-agua-en-espana' },
+    { titulo: 'La historia del agua en Suntory Beverage & Food Europe',
+      fuente: 'Suntory Beverage & Food Iberia', imagen: 'assets/n-historia-agua.jpg',
+      url: 'https://suntorybeverageandfood-europe.com/es-es/iberia/noticias/actualidad/la-historia-del-agua-en-suntory-beverage-food-europe/' }
+  ];
+
+  static ENLACES = [
+    { texto: 'Sostenibilidad · Suntory Beverage & Food Iberia', fuente: 'suntorybeverageandfood-europe.com', url: 'https://suntorybeverageandfood-europe.com/es-es/iberia/sostenibilidad/' },
+    { texto: 'Open Rivers · CIREF', fuente: 'cirefluvial.com', url: 'https://cirefluvial.com/open-rivers/' },
+    { texto: 'Open Rivers Tajuña · AEMS-Ríos con Vida', fuente: 'riosconvida.es', url: 'https://riosconvida.es/open-rivers-tajuna/' },
+    { texto: 'Guardianes del Tajo · Mediodes', fuente: 'mediodes.com', url: 'https://www.mediodes.com/guardianes-del-tajo/' },
+    { texto: 'Natural water retention in the Ramabujas stream · Stroming', fuente: 'stroming.nl', url: 'https://www.stroming.nl/en/natural-water-retention-ramabujas-stream' },
+    { texto: 'Ramabujas · Stroming Media', fuente: 'media.stroming.nl', url: 'https://media.stroming.nl/ramabujas/' },
+    { texto: 'Natural water retention in the Spanish Ramabujas stream catchment · Wetlands International Europe', fuente: 'europe.wetlands.org', url: 'https://europe.wetlands.org/natural-water-retention-in-the-spanish-ramabujas-stream-catchment/' }
+  ];
+
+  state = { pagina: null, busqueda: '', video: false, fabrica: false, menu: false, comp: 50, saliendo: null, proyecto: null, foto: null,
     proyectoDoc: null, tipoDoc: null, anioDoc: null, ordenDoc: 'reciente', menuDoc: null };
 
   get pagina() { return this.state.pagina ?? (this.props.startPage ?? 'home'); }
@@ -700,7 +1136,13 @@ class Component extends DCLogic {
     if (!el) return;
     const padre = el.parentElement;
     const ancho = (padre && padre.clientWidth) || window.innerWidth || 1920;
-    const zoom = Math.min(1, ancho / 1920);
+    // Por debajo de 1200px la maqueta es fluida (CSS con media queries) y no se escala
+    const fluido = this.esFluido();
+    // Portátiles (1200–1599px): maqueta base de 1440px para que el texto no se encoja en exceso
+    const base = ancho >= 1800 ? 1920 : 1440;
+    if (!fluido) { el.style.width = base + 'px'; el.setAttribute('data-lienzo', String(base)); }
+    else el.setAttribute('data-lienzo', 'fluido');
+    const zoom = fluido ? 1 : (base === 1440 ? Math.min(1.25, ancho / base) : Math.min(1, ancho / base));
     const alturaVentana = window.innerHeight || 1080;
     if (ancho === this._ultimoAncho && alturaVentana === this._ultimaAltura) return;
     this._ultimoAncho = ancho;
@@ -711,8 +1153,11 @@ class Component extends DCLogic {
 
   // El hero ocupa exactamente el viewport (en px de diseño), así todo —logo,
   // titular, flecha y CTA— entra sin scroll y no queda hueco sobre él.
+  esFluido() { return (window.innerWidth || 1920) < 1200; }
+  esMovil() { return (window.innerWidth || 1920) < 768; }
+
   ajustarHero(zoom, alturaVentana) {
-    const alto = Math.max(760, Math.round(alturaVentana / (zoom || 1)));
+    const alto = Math.max(this.esFluido() ? 560 : 760, Math.round(alturaVentana / (zoom || 1)));
     // el bloque sube exactamente la altura real de la barra: sin franja azul sobre el hero
     if (this._capa && this._capa.parentElement && this._nav) {
       const navAlto = Math.round(this._nav.getBoundingClientRect().height / (zoom || 1));
@@ -730,7 +1175,7 @@ class Component extends DCLogic {
     if (!el || !el.isConnected) return;
     const z = zoom || parseFloat((this._raiz && this._raiz.style.zoom) || 1) || 1;
     const h = alturaVentana || window.innerHeight || 1080;
-    el.style.maxHeight = Math.max(520, Math.round(h / z) - 140) + 'px';
+    el.style.maxHeight = this.esFluido() ? (h - 24) + 'px' : Math.max(520, Math.round(h / z) - 140) + 'px';
   }
 
   vigilarEscala() {
@@ -753,7 +1198,7 @@ class Component extends DCLogic {
   documentosFiltrados() {
     const s = this.state;
     const q = (s.busqueda || '').trim().toLowerCase();
-    let lista = Component.DOCUMENTOS.map((d, k) => ({ ...d, id: k, esES: d.idioma === 'ES', esEN: d.idioma !== 'ES' }));
+    let lista = Component.DOCUMENTOS.map((d, k) => ({ ...d, id: k, esES: d.idioma === 'ES', esEN: d.idioma !== 'ES', disponible: !!d.archivo, pendiente: !d.archivo }));
     if (s.proyectoDoc) lista = lista.filter((d) => d.proyecto === s.proyectoDoc);
     if (s.tipoDoc) lista = lista.filter((d) => d.tipo === s.tipoDoc);
     if (s.anioDoc) lista = lista.filter((d) => d.anio === s.anioDoc);
@@ -767,9 +1212,7 @@ class Component extends DCLogic {
 
   menusDoc() {
     const s = this.state;
-    const tipos = [];
-    for (const d of Component.DOCUMENTOS) if (!tipos.includes(d.tipo)) tipos.push(d.tipo);
-    tipos.sort((a, b) => a.localeCompare(b, 'es'));
+    const tipos = Component.TIPOS_DOC;
     const anios = [];
     for (const d of Component.DOCUMENTOS) if (!anios.includes(d.anio)) anios.push(d.anio);
     anios.sort((a, b) => b.localeCompare(a));
@@ -786,8 +1229,7 @@ class Component extends DCLogic {
       toggle: () => this.setState({ menuDoc: s.menuDoc === id ? null : id }),
       opciones
     });
-    const proyectos = [];
-    for (const d of Component.DOCUMENTOS) if (!proyectos.includes(d.proyecto)) proyectos.push(d.proyecto);
+    const proyectos = Component.PROYECTOS_DOC;
     return [
       menu('proyecto', 'Proyecto', s.proyectoDoc, [
         opcion('Todos los proyectos', !s.proyectoDoc, () => this.setState({ proyectoDoc: null, menuDoc: null })),
@@ -830,9 +1272,10 @@ class Component extends DCLogic {
     window.addEventListener('wheel', this._rueda, { passive: false });
     this._tecla = (e) => {
       if (e.key !== 'Escape') return;
-      if (this.state.foto) this.setState({ foto: null });
-      else if (this.state.proyecto) this.setState({ proyecto: null });
-      else if (this.state.video) this.setState({ video: false });
+      if (this.state.menu) this.cerrarAnimado('menu', { menu: false });
+      else if (this.state.foto) this.cerrarAnimado('foto', { foto: null });
+      else if (this.state.proyecto) this.cerrarAnimado('proyecto', { proyecto: null }, () => { this._gal = null; });
+      else if (this.state.video) this.cerrarAnimado('video', { video: false });
     };
     window.addEventListener('keydown', this._tecla);
     this._fueraMenu = (e) => {
@@ -893,6 +1336,8 @@ class Component extends DCLogic {
     const lb = q('logoBlanco'), la = q('logoAzul');
     if (lb) lb.style.opacity = sobreClaro ? '0' : '1';
     if (la) la.style.opacity = sobreClaro ? '1' : '0';
+    const burger = nav.querySelector('[data-r=burger]');
+    if (burger) burger.style.color = sobreClaro ? '#297AB1' : '#fff';
     nav.querySelectorAll('nav a').forEach(a => {
       a.style.transition = 'color .35s ease';
       a.style.color = sobreClaro ? '#297AB1' : '#fff';
@@ -1052,6 +1497,26 @@ class Component extends DCLogic {
         this.irArriba();
       });
     };
+  }
+
+  // Abre Documentos con filtros ya aplicados y, si se pide, baja hasta un ancla (p. ej. Enlaces)
+  irDocsCon(filtros, ancla) {
+    return (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      const estado = { pagina: 'docs', proyectoDoc: null, tipoDoc: null, anioDoc: null, busqueda: '', menuDoc: null, ...filtros };
+      const despues = () => { if (ancla) setTimeout(() => this.desplazarSuave(ancla), 60); else this.irArriba(); };
+      if (this.pagina === 'docs') { this.setState(estado); despues(); return; }
+      this.transicionOla(() => { this.setState(estado); this.irArriba(); despues(); });
+    };
+  }
+
+  // Cierre con animación de salida: marca el elemento como saliente y lo desmonta al terminar
+  cerrarAnimado(clave, cambios, despues) {
+    if (this.state.saliendo === clave) return;
+    clearTimeout(this._tSalida);
+    this.setState({ saliendo: clave });
+    const ms = (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) ? 30 : 430;
+    this._tSalida = setTimeout(() => { if (despues) despues(); this.setState({ ...cambios, saliendo: null }); }, ms);
   }
 
   irArriba() {
@@ -1230,9 +1695,8 @@ class Component extends DCLogic {
   }
 
   renderVals() {
-    const nAct = this.props.numTarjetasActividades ?? 4;
     const p = this.pagina;
-    return {
+    const vals = {
       esHome: p === 'home',
       esActividades: p === 'actividades',
       esDocs: p === 'docs',
@@ -1241,12 +1705,12 @@ class Component extends DCLogic {
       irActividades: this.ir('actividades'),
       irDocs: this.ir('docs'),
       irNoticias: this.ir('noticias'),
-      refPista: (el) => { if (el && (!this._pista || this._pista.el !== el)) this._pista = this.montarPista(el, Component.FOTOS, 292, 420, 22); },
+      refPista: (el) => { if (el && (!this._pista || this._pista.el !== el)) this._pista = this.esMovil() ? this.montarPista(el, Component.FOTOS, 200, 280, 14) : this.montarPista(el, Component.FOTOS, 292, 420, 22); },
       refGaleria: (el) => {
         const fotos = ((this.state.proyecto || {}).fotos) || Component.FOTOS;
         if (el && (!this._gal || this._gal.el !== el || this._galFotos !== fotos)) {
           this._galFotos = fotos;
-          this._gal = this.montarPista(el, fotos, 172, 272, 20);
+          this._gal = this.esMovil() ? this.montarPista(el, fotos, 150, 220, 14) : this.montarPista(el, fotos, 210, 320, 20);
         }
       },
       pausarCarrusel: () => { this._pausa = true; },
@@ -1271,32 +1735,60 @@ class Component extends DCLogic {
           setTimeout(() => this.desplazarSuave(destino), 60);
         });
       },
+      menuAbierto: !!this.state.menu,
+      abrirMenu: () => { clearTimeout(this._tSalida); this.setState({ menu: true, saliendo: null }); },
+      cerrarMenu: () => this.cerrarAnimado('menu', { menu: false }),
+      mIrSeccion: (e) => { this.cerrarAnimado('menu', { menu: false }); vals.irSeccion(e); },
+      mIrDocs: (e) => { this.cerrarAnimado('menu', { menu: false }); vals.irDocs(e); },
+      mIrNoticias: (e) => { this.cerrarAnimado('menu', { menu: false }); vals.irNoticias(e); },
+      mIrActividades: (e) => { this.cerrarAnimado('menu', { menu: false }); vals.irActividades(e); },
+      fabricaAbierta: !!this.state.fabrica,
+      fabricaTextoBoton: this.state.fabrica ? 'Ocultar' : 'Ver las 5 acciones',
+      fabricaGiro: this.state.fabrica ? 'rotate(180deg)' : 'none',
+      fabricaFilas: this.state.fabrica ? '1fr' : '0fr',
+      fabricaOpacidad: this.state.fabrica ? '1' : '0',
+      fabricaMargen: this.state.fabrica ? '18px' : '0px',
+      fabricaOculta: this.state.fabrica ? 'false' : 'true',
+      toggleFabrica: () => this.setState({ fabrica: !this.state.fabrica }),
+      accionesFabrica: Component.ACCIONES_FABRICA.map((x, i) => ({ ...x, id: i })),
       proyectoAbierto: !!this.state.proyecto,
       proyLetra: (this.state.proyecto || {}).letra,
       proyTitulo: (this.state.proyecto || {}).titulo,
-      proyDescripcion: (this.state.proyecto || {}).descripcion,
-      proyDescripcion2: (this.state.proyecto || {}).descripcion2 || '',
       proyEstado: (this.state.proyecto || {}).estado || '',
       proyTieneEstado: !!(this.state.proyecto || {}).estado,
+      proyParrafos: (((this.state.proyecto || {}).parrafos) || []).map((texto, i) => ({ id: i, texto, margen: i === 0 ? '20px' : '16px' })),
       proyTieneKpis: (((this.state.proyecto || {}).kpis) || []).length > 0,
-      proyTieneGaleria: ((this.state.proyecto || {}).galeria !== false),
-      proyTieneDos: !!(this.state.proyecto || {}).descripcion2,
+      proyColumnas: 'repeat(' + Component.columnasKpi(((this.state.proyecto || {}).kpis || []).length) + ',minmax(0,1fr))',
+      proyTieneComparativa: !!(this.state.proyecto || {}).comparativa,
+      proyRejilla: (this.state.proyecto || {}).comparativa ? 'minmax(0,.98fr) minmax(0,1.02fr)' : 'minmax(0,.8fr) minmax(0,1.2fr)',
+      proyTieneCarrusel: ((this.state.proyecto || {}).galeria !== false),
+      proyAntes: ((this.state.proyecto || {}).comparativa || {}).antes || '',
+      compAspecto: ((this.state.proyecto || {}).comparativa || {}).aspecto || '16 / 10',
+      compEtqAntes: ((this.state.proyecto || {}).comparativa || {}).etqAntes || 'Antes',
+      compEtqDespues: ((this.state.proyecto || {}).comparativa || {}).etqDespues || 'Después',
+      compAltAntes: ((this.state.proyecto || {}).comparativa || {}).altAntes || '',
+      compAltDespues: ((this.state.proyecto || {}).comparativa || {}).altDespues || '',
+      compAria: ((this.state.proyecto || {}).comparativa || {}).aria || 'Comparar antes y después',
+      compPie: ((this.state.proyecto || {}).comparativa || {}).pie || '',
+      proyDespues: ((this.state.proyecto || {}).comparativa || {}).despues || '',
+      compPos: this.state.comp,
+      compResto: (100 - this.state.comp).toFixed(1),
+      compTexto: 'Se muestra un ' + Math.round(this.state.comp) + '% de la imagen de antes',
+      setComp: (e) => this.setState({ comp: Math.max(0, Math.min(100, parseFloat(e.target.value) || 0)) }),
+      proyTienePortada: !!(this.state.proyecto || {}).portada && !(this.state.proyecto || {}).comparativa,
+      proySinPortada: !!this.state.proyecto && !(this.state.proyecto || {}).portada && !(this.state.proyecto || {}).comparativa,
+      proyPortada: (this.state.proyecto || {}).portada || '',
+      proyPortadaAlt: (this.state.proyecto || {}).titulo || '',
+      proyLogo: (this.state.proyecto || {}).logo || 'assets/logo-gdt-azul.png',
+      proyLogoAlt: (this.state.proyecto || {}).logoAlt || 'Guardianes del Tajo',
       proyKpis: (((this.state.proyecto || {}).kpis) || []).map((k, i, a) => ({
+        id: i,
         valor: k.valor,
         etiqueta: k.etiqueta,
+        fondo: Component.fondoKpi(i, a.length),
         tramo: a.length === 5 ? (i < 3 ? 'span 2' : 'span 3') : 'auto'
       })),
-      proyColumnas: (() => {
-        const n = ((this.state.proyecto || {}).kpis || []).length;
-        if (n === 5) return 'repeat(6,minmax(0,1fr))';
-        const c = n === 4 ? 2 : (n === 6 ? 3 : Math.max(1, n));
-        return 'repeat(' + c + ',minmax(0,1fr))';
-      })(),
       proyImagen: (this.state.proyecto || {}).imagen,
-      proyLogoImg: React.createElement('img', {
-        src: (this.state.proyecto || {}).logo || 'assets/logo-gdt-azul.png',
-        alt: (this.state.proyecto || {}).logoAlt || 'Guardianes del Tajo',
-        style: { width: '100%', maxWidth: 330, display: 'block' } }),
       abrirProyecto: (e) => {
         if (!e) return;
         e.preventDefault();
@@ -1304,12 +1796,16 @@ class Component extends DCLogic {
         const letra = (a.textContent || '').trim().charAt(0);
         const p = Component.PROYECTOS.find(x => x.letra === letra) || Component.PROYECTOS[0];
         this._pausaGal = false;
-        this.setState({ proyecto: p });
+        clearTimeout(this._tSalida);
+        this.setState({ proyecto: p, comp: 50, saliendo: null });
       },
-      cerrarProyecto: () => { this._gal = null; this.setState({ proyecto: null }); },
+      cerrarProyecto: () => this.cerrarAnimado('proyecto', { proyecto: null }, () => { this._gal = null; }),
       pararClick: (e) => { if (e) e.stopPropagation(); },
-      actividades: Array.from({ length: Math.max(1, nAct) }, (_, k) => ({ id: k })),
-      noticias: Array.from({ length: 4 }, (_, k) => ({ id: k })),
+      noticias: Component.NOTICIAS.map((n, i) => ({ ...n, id: i, imgEl: Component.img(n.imagen, '', "width:100%;height:250px;object-fit:cover;border-radius:12px;display:block") })),
+      enlaces: Component.ENLACES.map((l, i) => ({ ...l, id: i })),
+      irEstudios: this.irDocsCon({ tipoDoc: 'Estudios técnicos' }),
+      irPublicaciones: this.irDocsCon({ tipoDoc: 'Publicaciones científicas' }),
+      irEnlaces: this.irDocsCon({}, 'enlaces'),
       documentos: this.documentosFiltrados(),
       sinResultados: this.documentosFiltrados().length === 0,
       menusFiltro: this.menusDoc().filter((m) => m.id !== 'orden'),
@@ -1345,14 +1841,27 @@ class Component extends DCLogic {
           else { const p = el.play(); if (p && p.catch) p.catch(() => {}); }
         }
       },
+      compImgDespues: this.state.proyecto && this.state.proyecto.comparativa ? Component.img(this.state.proyecto.comparativa.despues, this.state.proyecto.comparativa.altDespues, "position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block", { draggable: false }) : null,
+      compImgAntes: this.state.proyecto && this.state.proyecto.comparativa ? Component.img(this.state.proyecto.comparativa.antes, this.state.proyecto.comparativa.altAntes, "position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;CLIP".replace('CLIP', 'clip-path:inset(0 ' + (100 - this.state.comp).toFixed(1) + '% 0 0)'), { draggable: false }) : null,
+      portadaImg: this.state.proyecto && this.state.proyecto.portada ? Component.img(this.state.proyecto.portada, this.state.proyecto.titulo, "position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block") : null,
+      logoChipImg: this.state.proyecto ? Component.img(this.state.proyecto.logo || 'assets/logo-gdt-azul.png', this.state.proyecto.logoAlt || 'Guardianes del Tajo', "height:72px;width:auto;max-width:200px;object-fit:contain;display:block") : null,
+      logoGrandeImg: this.state.proyecto ? Component.img(this.state.proyecto.logo || 'assets/logo-gdt-azul.png', this.state.proyecto.logoAlt || 'Guardianes del Tajo', "width:100%;max-width:300px;display:block") : null,
+      videoEl: this.state.video ? React.createElement('video', { 'data-panel': '1', onClick: (e) => e.stopPropagation(), src: this.state.video, autoPlay: true, controls: true, loop: true, playsInline: true, style: Component.estilo("width:100%;max-width:1180px;border-radius:24px;display:block;box-shadow:0 30px 80px rgba(0,0,0,.5)") }) : null,
+      salProyecto: this.state.saliendo === 'proyecto' ? 'si' : 'no',
+      salFoto: this.state.saliendo === 'foto' ? 'si' : 'no',
+      salVideo: this.state.saliendo === 'video' ? 'si' : 'no',
+      salMenu: this.state.saliendo === 'menu' ? 'si' : 'no',
       fotoAbierta: !!this.state.foto,
-      fotoImg: this.state.foto ? React.createElement('img', { src: this.state.foto, alt: '',
+      fotoImg: this.state.foto ? React.createElement('img', { src: this.state.foto, alt: '', 'data-panel': '1',
         style: { maxWidth: '100%', maxHeight: '100%', borderRadius: 24, display: 'block', boxShadow: '0 30px 80px rgba(0,0,0,.5)' } }) : null,
-      cerrarFoto: () => this.setState({ foto: null }),
-      videoAbierto: this.state.video,
-      abrirVideo: () => this.setState({ video: true }),
-      cerrarVideo: () => this.setState({ video: false })
+      cerrarFoto: () => this.cerrarAnimado('foto', { foto: null }),
+      videoAbierto: !!this.state.video,
+      videoSrc: this.state.video || '',
+      abrirVideoCentros: () => { clearTimeout(this._tSalida); this.setState({ video: 'assets/video-mizuiku-centros.mp4', saliendo: null }); },
+      abrirVideoTeatro: () => { clearTimeout(this._tSalida); this.setState({ video: 'assets/video-mizuiku.mp4', saliendo: null }); },
+      cerrarVideo: () => this.cerrarAnimado('video', { video: false })
     };
+    return vals;
   }
 }
 </script>
