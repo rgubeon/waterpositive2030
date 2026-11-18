@@ -35,20 +35,6 @@ docs/        PDFs de "Documentos de interés" y comunicado AWS
 Si unpkg o Google Fonts no responden, la página no se pinta o se ve con otra tipografía.
 Para un despliegue sin dependencias externas, descarga esos ficheros y sirve copias locales.
 
-## Pendiente del cliente
-
-Estos documentos aparecen en la web como **«Próximamente»** hasta recibir el PDF:
-
-| Documento en la web | Archivo esperado |
-|---|---|
-| Biodiversidad y microbioma del suelo mediante ADN ambiental – Agricultura regenerativa | `Summary_report_on_SGS_DNA_sampling_002.pdf` |
-| Cálculo del ahorro de agua con cubiertas vegetales | `Ahorro_Cubiertas_Vegetales.pdf` |
-| Taller sobre cubiertas vegetales con ASAJA Toledo | `Workshop_ASAJA_Toledo_23-03-2026.pdf` |
-| Validación del beneficio hídrico de la restauración del río Tajuña | `2026_VWBA_Sign-Off_Report_-Spain-_Mediodes_TAJUÑA_SUNTORY.pdf` |
-
-Para activarlos: copia el PDF en `docs/` con un nombre sin espacios ni acentos y, en `index.html`,
-busca el título del documento en `static DOCUMENTOS` y cambia `archivo: null` por `archivo: 'docs/<nombre>.pdf'`.
-
 ## Notas
 
 - Todas las rutas son relativas: funciona en la raíz de un dominio o en un subdirectorio (`/<repo>/`).
